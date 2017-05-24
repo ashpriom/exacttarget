@@ -1,0 +1,298 @@
+%%[
+SET @RMA_NO = cust_ord_no 
+SET @ORDER_NO = cust_original_ord_no
+]%% 
+
+<table width="100%">
+	<tbody>
+		<tr>
+			<td>&nbsp;
+			   
+			</td>
+		    </tr>
+		<tr>
+		    <td>
+		        <table>
+		            <tr>
+		                <td><h2>%%=IIF(LANGUAGE == "FR", "Commande originale ", "Original Order ")=%% %%=v(@ORDER_NO)=%%</h2></td>
+		            </tr>
+		        </table>
+		    </td>
+		</tr>
+		<tr>
+		<tr>
+			<td>	
+			<!-- Begin Items -->
+			<table width="100%" border="0" cellpadding="3" cellspacing="0">
+				<tbody>	
+					<tr style="background-color:#E0E0E0; height:40px;">
+						<td></td>	
+						<td><strong>Description</strong></td>
+						<td><strong>%%=IIF(LANGUAGE == "FR", "Couleur/Grandeur", "Color/Size")=%%</strong></td>
+						<td align="right"><strong>%%=IIF(LANGUAGE == "FR", "Qte", "Qty")=%%</strong></td>
+						<td align="right"><strong>%%=IIF(LANGUAGE == "FR", "Prix", "Price")=%%</strong></td>
+						<td align="right"><strong>%%=IIF(LANGUAGE == "FR", "Rabais", "Discount")=%%</strong></td>
+						<td align="right"><strong>Total</strong></td>
+					</tr>
+					<!-- Building Item List -->
+					%%[
+			        VAR @i, @RC, @HeaderRow, @DetailRows, @tld
+			        SET @HeaderRow = LOOKUPROWS("ent.Order_Confirmation_Header_DE","cust_ord_no", @ORDER_NO)
+			        SET @DetailRows = LOOKUPROWS("ent.Order_Confirmation_Details_DE","cust_ord_no", @ORDER_NO)
+			        SET @RC = ROWCOUNT(@DetailRows)
+			        IF @RC > 0 THEN
+			        FOR @i=1 TO @RC DO
+			        SET @tld = Field(Row(@DetailRows ,@i),"total_line_discount")
+	                ]%%	
+					<tr>
+						<td><img alt="" width="54px" height="61px" src='%%=Field(Row(@DetailRows ,@i),"PRODUCT_IMAGE_URL")=%%' /></td>
+						<td>%%=Field(Row(@DetailRows ,@i),"item_web_desc")=%%</td>
+						<td>%%=Field(Row(@DetailRows ,@i),"web_color_desc")=%%/%%=Field(Row(@DetailRows ,@i),"item_size")=%%</td>
+						<td align="right">%%=Field(Row(@DetailRows ,@i),"qty_ordered")=%%</td>
+						<td align="right">%%=Format(Field(Row(@DetailRows ,@i),"regular_unit_retail"), "#,#.00 $;-#,#.00 $")=%%</td>
+						<td align="right">%%=IIF(Field(Row(@DetailRows ,@i),"total_line_discount") > 0, Format(Field(Row(@DetailRows ,@i),"total_line_discount"), "#,#.00 $;-#,#.00 $"), "")=%%</td>
+						<td align="right">%%=Format(Subtract(Multiply(Field(Row(@DetailRows ,@i),"qty_ordered"), Field(Row(@DetailRows ,@i),"regular_unit_retail")), @tld), "#,#.00 $;-#,#.00 $")=%%</td>
+					</tr>			
+					%%[
+	                NEXT @i
+	                ENDIF
+	                ]%%	
+	                <tr><td colspan="7"><hr style="border:solid 0.5px #F0F0F0;" /></td></tr>
+	                <!-- Summary -->
+	                %%[ IF ROWCOUNT(@HeaderRow) > 0 THEN ]%%
+					<tr>
+	                <td colspan="6" align="right">%%=IIF(LANGUAGE == "FR", "Sous-total :", "Subtotal :")=%%</td>
+	                <td align="right">%%=Format(Field(Row(@HeaderRow,1),"ord_total_amt"), "#,#.00 $;-#,#.00 $")=%%</td>
+	                </tr>	
+                    %%[
+					SET @ordDiscount = Field(Row(@HeaderRow,1),"total_disc_amt")
+					IF @ordDiscount > 0 THEN
+					]%%	
+	                <tr>
+	                <td colspan="6" align="right">%%=IIF(LANGUAGE == "FR", "Rabais :", "Discount :")=%%</td>
+	                <td align="right">%%=Format(@ordDiscount, "#,#.00 $;-#,#.00 $")=%%</td>
+	                </tr>
+	                %%[ENDIF]%%	
+					%%[
+					SET @ordShipAmt = Field(Row(@HeaderRow,1),"total_shipping_amt")
+					IF @ordShipAmt > 0 THEN ]%%
+	                <tr>
+	                <td colspan="6" align="right">%%=IIF(LANGUAGE == "FR", "Livraison :", "Shipping :")=%%</td>
+	                <td align="right">%%=IIF(@ordShipAmt  > 0, Format(@ordShipAmt, "#,#.00 $;-#,#.00 $"), IIF(LANGUAGE == "FR", "Gratuit", "Free"))=%%</td>
+	                </tr>
+					%%[ENDIF]%%	
+	                <!-- Printing taxes -->
+	                %%[
+                    Var @taxes, @row_tax, @tax_name
+                    Var @tax_amounts, @row_amt, @amt
+                    
+					SET @ordTaxCode = Field(Row(@HeaderRow,1),"tax_code")
+					SET @ordTaxAmt = Field(Row(@HeaderRow,1),"tax_amt")
+
+                    Set @taxes = BuildRowsetFromString(@ordTaxCode,"|")
+                    Set @tax_amounts = BuildRowsetFromString(@ordTaxAmt,"|")
+                    
+                    IF(Rowcount(@taxes) == Rowcount(@tax_amounts)) THEN
+                    
+                       FOR @i = 1 TO Rowcount(@taxes) DO
+                            Set @row_tax = Row(@taxes, @i)
+                            Set @row_amt = Row(@tax_amounts, @i)
+                            Set @tax_name = Field(@row_tax,1)
+                            Set @amt = Field(@row_amt,1)
+          
+                    IF (@amt > 0) THEN
+                    ]%%       
+	                <tr>
+	                <td colspan="6" align="right">%%=v(@tax_name)=%% :</td>
+	                <td align="right">%%=v(Format(@amt, "#,#.00 $;-#,#.00 $"))=%%</td>
+	                </tr>
+	                %%[
+	                   ENDIF     
+                       NEXT @i
+                       ENDIF
+                    ]%%
+	                <tr style="background-color:#F0F0F0;">
+	                %%[
+                    Var @payment_amounts, @row_payment_amt, @pay_amt, @total_amt
+					SET @ordPayAmt = Field(Row(@HeaderRow,1),"payment_amt")
+                    Set @payment_amounts = BuildRowsetFromString(@ordPayAmt,"|")
+                    
+                    Set @total_amt = 0
+                    
+                       FOR @i = 1 TO Rowcount(@payment_amounts) DO
+                            Set @row_payment_amt = Row(@payment_amounts, @i)
+                            Set @pay_amt = Field(@row_payment_amt, 1)
+                            Set @total_amt = Add(@total_amt, @pay_amt)
+                       NEXT @i
+                    ]%%
+
+
+					%%[ENDIF]%% <!-- End of HeaderRow > 0 -->					
+	                <td colspan="6" align="right"><strong>%%=IIF(LANGUAGE == "FR", "Total de la commande :", "Order Total :")=%%</strong></td>
+	                <td align="right">%%=v(Format(@total_amt, "#,#.00 $;-#,#.00 $"))=%%</td>
+	                </tr>
+				</tbody>
+			</table>
+			<br /><br />
+			</td>
+		</tr>
+		<!-- Return Section -->
+		<tr>
+		    <td>
+		        <table>
+		            <tr>
+		                <td><h2>%%=IIF(LANGUAGE == "FR", "Votre crédit ", "Your Credit ")=%% %%=v(@RMA_NO)=%%</h2></td>
+		            </tr>
+		        </table>
+		    </td>
+		</tr>
+		<tr>
+			<td>	
+			<!-- Begin Items -->
+			<table width="100%" border="0" cellpadding="3" cellspacing="0">
+				<tbody>	
+					<!-- Printing Multiple Tenders -->
+	                %%[
+                    Var @types, @row_type, @type_name
+                    Var @type_IDS, @row_type_id, @type_id
+                    Var @type_amounts, @row_amt, @amt
+                    
+                    Set @types = BuildRowsetFromString(payment_type_group,"|")
+                    Set @type_IDS = BuildRowsetFromString(payment_type_id,"|")
+                    Set @type_amounts = BuildRowsetFromString(payment_amt,"|")
+                    
+                    IF(Rowcount(@types) == Rowcount(@type_amounts)) THEN
+                    
+                       FOR @i = 1 TO Rowcount(@types) DO
+                            Set @row_type = Row(@types, @i)
+                            Set @row_type_id = Row(@type_IDS, @i)
+                            Set @row_amt = Row(@type_amounts, @i)
+                            Set @type_name = Field(@row_type,1)
+                            Set @type_id = Field(@row_type_id,1)
+                            Set @amt = Field(@row_amt,1)
+                            
+                    ]%%        
+	                <tr>
+						<td colspan="7">%%=v(@type_name)=%% %%=v(@type_id)=%%</td>	
+					</tr>
+	                <tr>
+					    <td colspan="7">%%=Format(@amt, "#,#.00 $;-#,#.00 $")=%%</td>
+					</tr>
+	                %%[      
+                       NEXT @i
+                       ENDIF
+                    ]%%
+                    
+                    %%[
+                    VAR @card_link
+					SET @card_link = payment_ecard_no
+					IF NOT EMPTY(@card_link) THEN 
+					IF LANGUAGE == "FR" THEN
+					]%%
+					<tr>
+						<td colspan="4">Votre crédit a été émis sous forme de carte cadeau électronique: Veuillez cliquer <a href="%%=v(@card_link)=%%">ici</a> pour la récupérer</td>
+					</tr>
+					%%[ELSE]%%
+					<tr>
+						<td colspan="4">Your credit was issued in the form of an e-gift card: To retrieve your e-card, please click <a href="%%=v(@card_link)=%%">here</a></td>
+					</tr>
+					%%[ ENDIF ]%%
+					%%[ ENDIF ]%%
+					
+					<tr><td>&nbsp;</td></tr>
+					<tr style="background-color:#E0E0E0; height:40px;">
+						<td></td>	
+						<td><strong>Description</strong></td>
+						<td><strong>%%=IIF(LANGUAGE == "FR", "Couleur/Grandeur", "Color/Size")=%%</strong></td>
+						<td align="right"><strong>Total</strong></td>
+						
+					</tr>
+					<!-- Building Item List -->
+					%%[
+			        VAR @i, @RC, @DetailCreditRows
+			        SET @DetailCreditRows = LOOKUPROWS("ent.Order_Credit_Details_DE","cust_ord_no", @RMA_NO)
+			        SET @RC = ROWCOUNT(@DetailCreditRows)
+			        IF @RC > 0 THEN
+			        FOR @i=1 TO @RC DO
+	                ]%%	
+					<tr>
+						<td><img alt="" width="54px" height="61px" src='%%=Field(Row(@DetailCreditRows ,@i),"PRODUCT_IMAGE_URL")=%%' /></td>
+						<td>%%=Field(Row(@DetailCreditRows ,@i),"item_web_desc")=%%</td>
+						<td>%%=Field(Row(@DetailCreditRows ,@i),"web_color_desc")=%%/%%=Field(Row(@DetailCreditRows ,@i),"item_size")=%%</td>
+						<td align="right">%%=Field(Row(@DetailCreditRows ,@i),"qty_ordered")=%%</td>
+					</tr>			
+					%%[
+	                NEXT @i
+	                ENDIF
+	                ]%%	
+	                <tr><td colspan="4"><hr style="border:solid 0.5px #F0F0F0;" /></td></tr>
+	                <!-- Summary -->
+					%%[
+                    Var @tax_amounts, @row_amt, @amt, @total_tax 
+                    Set @tax_amounts = BuildRowsetFromString(tax_amt,"|")
+                    
+					Set @total_tax = 0
+					
+                       FOR @i = 1 TO Rowcount(@tax_amounts) DO
+                            Set @row_amt = Row(@tax_amounts, @i)
+                            Set @amt = Field(@row_amt,1)
+							Set @total_tax = Add(@total_tax, @amt)
+							
+						NEXT @i
+					]%%
+	                <tr>
+	                <td colspan="3" align="right">%%=IIF(LANGUAGE == "FR", "Sous-total :", "Subtotal")=%%</td>
+	                <td align="right">%%=Format(Subtract(ord_total_amt, @total_tax), "#,#.00 $;-#,#.00 $")=%%</td>
+	                </tr>
+					
+	                <!-- Printing taxes -->
+					%%[
+                    Var @taxes, @row_tax, @tax_name
+                    Var @tax_amounts, @row_amt, @amt 
+                    
+                    Set @taxes = BuildRowsetFromString(tax_code,"|")
+                    Set @tax_amounts = BuildRowsetFromString(tax_amt,"|")
+                    
+                    IF(Rowcount(@taxes) == Rowcount(@tax_amounts)) THEN
+					
+                       FOR @i = 1 TO Rowcount(@taxes) DO
+                            Set @row_tax = Row(@taxes, @i)
+                            Set @row_amt = Row(@tax_amounts, @i)
+                            Set @tax_name = Field(@row_tax,1)
+                            Set @amt = Field(@row_amt,1)
+          
+                    IF (@amt > 0) THEN
+                    ]%%       
+	                <tr>
+	                <td colspan="3" align="right">%%=v(@tax_name)=%% :</td>
+	                <td align="right">%%=v(Format(@amt, "#,#.00 $;-#,#.00 $"))=%%</td>
+	                </tr>
+	                %%[
+	                   ENDIF     
+                       NEXT @i
+                       ENDIF
+                    ]%%
+	                <tr style="background-color:#F0F0F0;">
+	                %%[
+                    Var @payment_amounts, @row_payment_amt, @pay_amt, @total_amt
+
+                    Set @payment_amounts = BuildRowsetFromString(payment_amt,"|")
+                    
+                    Set @total_amt = 0
+                    
+                       FOR @i = 1 TO Rowcount(@payment_amounts) DO
+                            Set @row_payment_amt = Row(@payment_amounts, @i)
+                            Set @pay_amt = Field(@row_payment_amt, 1)
+                            Set @total_amt = Add(@total_amt, @pay_amt)
+                       NEXT @i
+                    ]%% 
+	                <td colspan="3" align="right"><strong>%%=IIF(LANGUAGE == "FR", "Montant crédité :", "Credit Amount :")=%%</strong></td>
+	                <td align="right">%%=v(Format(@total_amt, "#,#.00 $;-#,#.00 $"))=%%</td>
+	                </tr>
+				</tbody>
+			</table>
+			<br /><br />
+			</td>
+		</tr>
+	</tbody>
+</table>

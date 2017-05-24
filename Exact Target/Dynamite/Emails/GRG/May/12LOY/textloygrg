@@ -1,0 +1,106 @@
+View this message in your
+%%view_email_url%%
+web browser
+
+http://www.garageclothing.com/ca/ 
+
+https://www.facebook.com/Garage 
+
+http://instagram.com/garageclothing 
+
+https://twitter.com/garageclothing 
+
+http://www.pinterest.com/GarageClothing/ 
+
+http://garageclothing.tumblr.com/ 
+
+https://www.youtube.com/user/GRGTV 
+
+http://www.garageclothing.com/ca/cat/features 
+
+http://www.garageclothing.com/ca/cat/basics 
+
+http://www.garageclothing.com/ca/cat/tops 
+
+http://www.garageclothing.com/ca/cat/denim 
+
+http://www.garageclothing.com/ca/cat/bottoms 
+
+http://www.garageclothing.com/ca/cat/dresses 
+
+http://www.garageclothing.com/ca/cat/jackets-coats 
+
+http://www.garageclothing.com/ca/cat/sleep 
+
+http://www.garageclothing.com/ca/cat/accessories 
+
+http://www.garageclothing.com/ca/cat/sale 
+
+http://www.garageclothing.com/ca/cat/new-arrivals?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=AUG29_7AM_CA_EN&utm_campaign=CTA1_30OFF 
+
+%%ftaf_url%%
+
+http://www.garageclothing.com/ca/stores/storeLocator.jsp 
+
+http://www.garageclothing.com/ca/helpdesk/contact.jsp 
+
+http://blog.garageclothing.com?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=CA_EN&utm_campaign=CTA_FOOTER_BLOG 
+
+https://www.facebook.com/Garage 
+
+http://instagram.com/garageclothing# 
+
+https://twitter.com/GarageClothing 
+
+http://www.pinterest.com/GarageClothing/ 
+
+http://www.garageclothing.com/ca/?pop=sms 
+
+FREE SHIPPING ON ALL ORDERS
+For a limited time get free standard shipping on your order. This shipping offer cannot be combined with other shipping promotions. The cost for shipping will automatically be adjusted at checkout for all eligible orders. No discount code is required at checkout. No minimum purchase is required for this promotion. This offer does not apply to orders being shipped to Nunavut, Yukon, the Northwest Territories, or areas outside of continental USA. This promotion does not apply toward previously purchased merchandise. Offer subject to change as Garage reserves the right to modify or cancel this promotion without notice. Offer available for a limited time. 
+
+Online Only! 30% OFF ALL ORDERS
+Starting Thursday, August 28th @ 7:00 AM E.S.T until Tuesday, September 2nd @ 7:00 AM E.S.T get 30% off all orders. Offer applies to regular and sale merchandise. Offer is valid ONLINE only. Discount will be applied automatically at checkout. Discount is applicable to price before taxes.  This promotion excludes outerwear, plaid shirts and sleepwear.This promotion does not apply towards previously purchased merchandise.  This promotion does not apply towards purchase of gift cards and online gift certificates. This promotion cannot be combined with any other promotions or promotional code offers. Offer subject to change as Garage reserves the right to modify or cancel this promotion without notice. Offer available for a limited time or until quantities last. 
+
+©2014 GARAGE. All rights Reserved. 
+http://www.garageclothing.com/ca/community/privacy-policy 
+Privacy Policy . 
+http://www.garageclothing.com/ca/community/terms-and-conditions 
+Conditions of Use .
+
+
+
+This email was sent to
+mailto:%%emailaddr%%
+%%emailaddr%%
+
+Make sure this email goes to your inbox. Add
+mailto:%%replyemailaddress%%
+%%replyemailaddress%%  to your address book.
+
+
+%%Member_Busname%%
+
+%%Member_Addr%% %%Member_City%%, %%Member_State%% %%Member_PostalCode%% %%Member_Country%%
+
+
+Questions or concerns? Contact customer service at
+mailto:CustomerExperience@garage.ca
+CustomerExperience@garage.ca.
+
+
+%%[
+VAR @e, @c, @l, @et, @unsub
+SET @c = Lowercase(COUNTRY)
+SET @e = EMAIL
+SET @l = LANGUAGE
+IF @l == "FR" THEN
+SET @l = Concat("fr-", @c)
+ELSE
+SET @l = Concat("", @c)
+ENDIF
+SET @unsub = URLEncode("http://www.garageclothing.com/%%=v(@l)=%%/?un=true&token=undef&email=%%=v(@e)=%%")
+]%%
+
+%%=RedirectTo(@unsub)=%%
+Unsubscribe

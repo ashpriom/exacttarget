@@ -1,0 +1,3 @@
+SELECT d.EMAIL, d.SUBSCRIBER_KEY, e.LAST_OPEN_DATE, e.LAST_CLICK_DATE, e.STATUS
+FROM ent.GAR_CA d 
+JOIN ent.Gar_EngagementInfo e ON d.SUBSCRIBER_KEY = e.SubscriberKey

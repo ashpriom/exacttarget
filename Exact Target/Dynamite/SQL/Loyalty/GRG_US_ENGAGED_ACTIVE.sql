@@ -1,0 +1,3 @@
+SELECT * 
+FROM ent.GAR_US_ENGAGED
+WHERE (STATUS IN ('active', 'bounced') OR STATUS IS NULL)

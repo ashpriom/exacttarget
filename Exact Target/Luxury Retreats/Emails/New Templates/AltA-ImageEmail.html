@@ -1,0 +1,228 @@
+<table width="620" border="0" cellpadding="0" cellspacing="0" align="center" style="background-color: #f5f5f5;text-align: center;">
+	<tbody>
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
+			@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+			/*@font-face{
+			    font-family: "Libre Baskerville";
+			    src:url('https://luxuryretreats-my.sharepoint.com/personal/niall_reilly_luxuryretreats_com/Documents/FontsforDev/Baskerville.ttf') format('truetype'), 
+			        url('https://luxuryretreats-my.sharepoint.com/personal/niall_reilly_luxuryretreats_com/Documents/FontsforDev/Baskerville.woff2') format('woff2'),
+			        url('https://luxuryretreats-my.sharepoint.com/personal/niall_reilly_luxuryretreats_com/Documents/FontsforDev/Baskerville.woff') format('woff');
+			    font-weight: normal;
+			    font-style: normal;
+			}
+			@font-face{
+			    font-family: "Montserrat","Proxima Nova Semibold";
+			    src:url('https://luxuryretreats-my.sharepoint.com/personal/niall_reilly_luxuryretreats_com/Documents/FontsforDev/ProximaNova-Semibold.ttf') format('truetype'), 
+			        url('https://luxuryretreats-my.sharepoint.com/personal/niall_reilly_luxuryretreats_com/Documents/FontsforDev/ProximaNova-Semibold.woff2') format('woff2'),
+			        url('https://luxuryretreats-my.sharepoint.com/personal/niall_reilly_luxuryretreats_com/Documents/FontsforDev/ProximaNova-Semibold.woff') format('woff');
+			    font-weight: normal;
+			    font-style: normal;
+			}
+			@font-face{
+			    font-family: "Montserrat","Proxima Nova Light";
+			    src:url('https://luxuryretreats-my.sharepoint.com/personal/niall_reilly_luxuryretreats_com/Documents/FontsforDev/ProximaNova-Light.ttf') format('truetype'), 
+			        url('https://luxuryretreats-my.sharepoint.com/personal/niall_reilly_luxuryretreats_com/Documents/FontsforDev/ProximaNova-Light.woff2') format('woff2'),
+			        url('https://luxuryretreats-my.sharepoint.com/personal/niall_reilly_luxuryretreats_com/Documents/FontsforDev/ProximaNova-Light.woff') format('woff');
+			    font-weight: normal;
+			    font-style: normal;
+			}*/
+			a, button{cursor: pointer;text-decoration: none;color:#252525;}
+			img{display:block}
+			table{margin-top: 10px;text-align: center;width:100%;max-width:640px;}
+			body{background-color: #f5f5f5;color:black;margin:auto;width: 100%;max-width: 640px;}
+
+			.wrapper{
+			  width: 100%;
+			  max-width: 640px;
+			  margin: auto;
+			  background-color: #f5f5f5;
+			}
+
+			.centerIt{text-align: center;margin:auto;}
+			.preheaderLeft{font-size:10px;text-transform:uppercase;letter-spacing: 1px;margin-bottom:15px;font-family:'Montserrat','Proxima Nova Light', Segoe UI;font-weight: 700;padding: 5px;}
+			.preheaderRight{font-size:10px;text-decoration:underline;letter-spacing: 1px;margin-bottom:15px;font-family:'Montserrat','Proxima Nova Light', Segoe UI;font-weight: 700;padding: 5px;}
+			.lrlogo{outline:none;text-decoration:none;display:block; border:none;width:200px;height:64px;margin-top: 25px;}
+			.line{border-top:1px solid #e2dbd1;width:640px;color:#e2dbd1;width:100%;margin-top:36px;margin-bottom:36px;}
+			.CTA .LEADIN{font-size:18px;text-transform:uppercase;letter-spacing: 2px;padding-top: 15px;padding-bottom: 15px;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI;font-weight: 600;}
+			.CTA .HEADER{font-size:48px;letter-spacing: 1px;margin-bottom:36px;margin-top: 30px;font-family:'Libre Baskerville',Futura,Palatino;}
+			.CTA .Body{font-size:24px;letter-spacing: 0.5px;line-height:180%;font-family:'Montserrat','Proxima Nova Light', Segoe UI;}
+			.CTA .Text{font-size:18px;text-transform:uppercase;letter-spacing: 2px;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI;font-weight: 400;color:#f4f4f4;padding: 20px;}
+			.CTA .Button{background-color:#252525;height: 60px;width:350px;margin:20px 60px;border: 0px;}
+
+			.halfTable{width:50%;max-width:320px;padding:0px;}
+			.HalfTableLeft{float:left;}.HalfTableRight{float:right;}
+
+			.premiumSelectionWrapper{
+			    width:100%;max-width: 610px;height:auto;max-height: 705px;
+			    -webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+			    -moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+			    box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+			}
+			.premiumSelectionWrapper .header{height:auto;max-height: 65px;width:100%;max-width: 610px;text-transform: uppercase;font-weight: 600px;}
+			.premiumSelectionWrapper .copyBlock{padding:0px 20px 20px 20px;}
+			.premiumSelectionWrapper .regionName{font-size: 12px;font-weight:600;text-transform:uppercase;letter-spacing: 3px;color:#252525;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI,"Montserrat","Proxima Nova Light";}
+			.premiumSelectionWrapper .villaName{font-size: 48px;font-weight:600;text-transform:none;letter-spacing:0px;color:#252525;font-family:'Libre Baskerville',Futura,Palatino,"Montserrat","Proxima Nova Light";margin: 5px 0px;}
+			.premiumSelectionWrapper .villaFeatures{font-size: 18px;font-weight:400;text-transform:none;letter-spacing:0px;color:#252525;font-family:'Libre Baskerville',Futura,Palatino,"Montserrat","Proxima Nova Light";}
+			.premiumSelectionWrapper .CTAa{font-size:14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ffffff;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI,"Montserrat","Proxima Nova Light";line-height: 7px;}
+			.premiumSelectionWrapper .CTAb{font-size:14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ff5a60;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI,"Montserrat","Proxima Nova Light";line-height: 7px;margin-bottom: 20px;}
+			.premiumSelectionWrapper .CTAb span, .c2ListBlock .CTAb span{border-bottom:1px solid #ff5a60;padding-bottom:3px;}
+			.premiumSelectionWrapper .CTAc{font-size:14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ffffff;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI,"Montserrat","Proxima Nova Light";line-height: 7px;}
+			.premiumSelectionWrapper .CTAb span{border-bottom:1px solid #ff5a60;padding-bottom:3px;}
+			.premiumSelectionWrapper .Button{background-color:#252525;width:100%;max-width: 560px;height:auto;max-height: 45px;padding: 20px;outline:none;margin-bottom: 20px;border: none;}
+
+			/* c2ListBlock */
+			.c2ListBlock{
+			    width:100%;max-width: 610px;height:auto;max-height: 305px;
+			    -webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+			    -moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+			    box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+			}
+			.c2ListBlock .image{width:100%;height:100%;max-width:305px;max-height:305px;}
+			.c2ListBlock .copyBlock{padding: 0px 20px;text-align: left;}
+			.c2ListBlock .regionName{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing: 3px;color:#252525;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI,"Montserrat","Proxima Nova Light";}
+			.c2ListBlock .villaName{font-size: 34px;font-weight:400;text-transform:none;letter-spacing: 0px;color:#252525;font-family:'Libre Baskerville',Futura,Palatino,"Montserrat","Proxima Nova Light";line-height: 140%;height: 115px;}
+			.c2ListBlock .villaFeatures{font-size: 22px;font-weight:400;text-transform:none;letter-spacing:1px;color:#252525;font-family:'Libre Baskerville',Futura,Palatino,"Montserrat","Proxima Nova Light";line-height: 180%;padding-top: 10px;}
+			.c2ListBlock .CTAa{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ffffff;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI,"Montserrat","Proxima Nova Light";line-height:5px;}
+			.c2ListBlock .CTAb{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ff5a60;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI,"Montserrat","Proxima Nova Light";line-height:5px;}
+			.premiumSelectionWrapper .CTAb span{border-bottom:1px solid #ff5a60;padding-bottom:3px;}
+			.c2ListBlock .CTAc{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ffffff;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI,"Montserrat","Proxima Nova Light";line-height:5px;}
+			.pinkBack{background-color:#f37870;}
+			.pinkBackC{
+			  background-color: #f37870;
+			  width: 300px;
+			  position: absolute;
+			  text-align: center;
+			  margin-top: -35px;
+			  margin-left: 305px !important;
+			  height: auto;
+			  max-height: 60px;
+			  z-index: 1000;
+			  text-align: center;
+			}
+			.c2ListBlock .Button{background-color:#252525;width:100%;max-width:260px;height:auto;max-height:40px;padding: 20px;outline: none;border: none;}
+			/* c2ListBlock */
+
+			/* Prefooter */
+			.Prefooter{margin:80px 20px;}
+			.Prefooter .header{font-size:48px;letter-spacing: 1px;margin-bottom:36px;font-family:'Libre Baskerville',Futura,Palatino;}
+			.Prefooter .Body{font-size:24px;letter-spacing: 0.5px;line-height:180%;font-family:'Montserrat','Proxima Nova Light', Segoe UI;}
+			.Prefooter .Text{font-size:14px;text-transform:uppercase;letter-spacing: 2px;font-family:'Montserrat','Proxima Nova Semibold', Segoe UI;font-weight: 400;color:#f4f4f4;padding: 20px;}
+			.Prefooter .Button{background-color:#252525;height:60px;width:350px;margin:20px 60px;outline: none;border: 0px;border: none;}
+			/* Prefooter */
+
+			/* Footer */
+			.Footer{align-items:center;justify-content:center;}
+			.Footer .socialIcons a{width:40px;height:40px;margin:0px 10px;}
+			.Footer .footerText{font-size: 12px;font-family:'Montserrat','Proxima Nova Light', Segoe UI;line-height: 200%;}
+			.Footer .monogram{width: 100px;height:100px;margin: 50px auto;}
+			/* Footer */
+
+			#container { width:100%; max-width:640px; }
+			.deviceWidth { width:100%; max-width:640px; }
+
+			@media only screen and (min-width: 481px) and (max-width:639px){
+			  .c2ListBlock .villaName{font-size:1.5em !important;}
+			  .c2ListBlock .villaFeatures{font-size:1.2em !important;line-height: 150% !important;}
+			  .pinkBackC{width: 170px !important;}
+			  .c2ListBlock .CTAc{font-size: 10px !important;}
+			}
+
+			@media only screen and (max-width:480px){
+			  .hideMobile{display:none !important;}
+			  .c2ListBlock .villaName{height:94px !important;}
+			  .c2ListBlock .villaName{font-size:1.3em !important;}
+			  .c2ListBlock .villaFeatures{font-size:1em !important;line-height: 150% !important;padding-bottom: 10px !important;height: 130px !important;}
+			  .c2ListBlock .CTAa,.c2ListBlock .CTAb,.c2ListBlock .CTAc{font-size:10px !important;}
+			  .pinkBackC{width: 160px !important;}  
+			}
+
+			@media only screen and (max-width:375px){
+			  .pinkBackC{width: 161px !important;margin-top: -40px !important;}
+			  .c2ListBlock .CTAc{font-size: 10px !important;}
+			}        
+
+			@media only screen and (max-width:320px){
+			  .c2ListBlock .CTAa,.c2ListBlock .CTAb,.c2ListBlock .CTAc{font-size:9px;}
+			  .pinkBackC{width: 161px !important;margin-top: -38px !important;}
+			  .c2ListBlock .villaName{height: 100px !important;}
+			}
+		</style>
+		<tr>
+			<td>
+			<a conversion="true" href="%%view_email_url%%" target="_blank"><img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image_01.jpg" width="620" alt="" border="0" style="display: block;" /></a></td>
+		</tr>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.luxuryretreats.com?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_campaign=%%jobid%%&utm_term=%%emailname_%%" target="_blank"><img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image_02.jpg" width="620" alt="" border="0" style="display: block;" /></a></td>
+		</tr>
+		<tr>
+			<td><img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image_03.jpg" width="620" alt="" border="0" style="display: block;" /></td>
+		</tr>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.luxuryretreats.com/vacation-rentals?col-lections=NewVillas?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_campaign=%%jobid%%&utm_term=%%emailname_%%" target="_blank"><img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image_04.jpg" width="620" alt="" border="0" style="display: block;" /></a></td>
+		</tr>
+		<tr>
+			<td>
+			<img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image_05.jpg" width="620" alt="" border="0" style="display: block;" /></td>
+		</tr>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.luxuryretreats.com/vacation-rentals/United-States/Colorado-Greater-Aspen/Downtown-Aspen/Castle-Rim-117051?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_campaign=%%jobid%%&utm_term=%%emailname_%%" target="_blank"><img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image_06.jpg" width="620" alt="" border="0" style="display: block;" /></a></td>
+		</tr>
+		<tr>
+			<td>
+			<img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image_07.jpg" width="620" alt="" border="0" style="display: block;" /></td>
+		</tr>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.luxuryretreats.com/vacation-rentals/United-States/Colorado-Greater-Aspen/Downtown-Aspen/Castle-Rim-117051?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_campaign=%%jobid%%&utm_term=%%emailname_%%" target="_blank"><img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image_08.jpg" width="620" alt="" border="0" style="display: block;" /></a></td>
+		</tr>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.luxuryretreats.com/vacation-rentals/Caribbean/Turks-and-Caicos/Babalua-Beach/Beach-Enclave-Oceanview-Villa-7-4-Bedroom-119258?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_campaign=%%jobid%%&utm_term=%%emailname_%%" target="_blank"><img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image2_09.jpg" width="620" alt="" border="0" style="display: block;" /></a></td>
+		</tr>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.luxuryretreats.com/vacation-rentals/United-States/California-Los-Angeles/Malibu/Bali-Style-in-Malibu-119527?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_campaign=%%jobid%%&utm_term=%%emailname_%%" target="_blank"><img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image2_10.jpg" width="620" alt="" border="0" style="display: block;" /></a></td>
+		</tr>
+		<tr>
+			<td>
+			<img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image2_11.jpg" width="620" alt="" border="0" style="display: block;" /></td>
+		</tr>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.luxuryretreats.com?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_campaign=%%jobid%%&utm_term=%%emailname_%%" target="_blank"><img src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltA-Image_14.jpg" width="620" alt="" border="0" style="display: block;" /></a></td>
+		</tr>
+
+	    <!-- Footer -->
+	    <tr class="deviceWidth centerIt Footer" style="width: 100%;text-align:center;max-width:640px;background: #f5f5f5;">
+        	<td>
+                <div class="CTA" style="width: 100%;text-align:center;max-width: 640px;">
+                    <div class="line" style="border-top:1px solid #e2dbd1;width:640px;color:#e2dbd1;width:100%;margin-top:36px;margin-bottom:36px;"></div>
+                    <p class="socialIcons">
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;width:40px;height:40px;margin:0px 10px;display: inline-block;"  href="https://www.facebook.com/luxuryretreats"><img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/facebook-2.png" style="border:none;width:auto;height:auto;display:inline-block;"></a>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;width:40px;height:40px;margin:0px 10px;display: inline-block;"  href="https://twitter.com/luxuryretreats"><img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/twitter-2.png" style="border:none;width:auto;height:auto;display:inline-block;"></a>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;width:40px;height:40px;margin:0px 10px;display: inline-block;"  href="https://www.youtube.com/user/luxuryretreats"><img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/youtube.png" style="border:none;width:auto;height:auto;display:inline-block;"></a>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;width:40px;height:40px;margin:0px 10px;display: inline-block;"  href="https://www.instagram.com/luxuryretreats/"><img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/instagram-2.png" style="border:none;width:auto;height:auto;display:inline-block;"></a>
+                    </p>
+                    <p class="footerText" style="font-size: 12px;font-family:'Montserrat','Proxima Nova Light',Segoe UI;line-height: 200%;">
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/contact?src=%%jobid%%&utm_source=ExactTarget&utm_medium=email&utm_campaign=%%view_email_url%%" target="_blank">Contact Us</a>  |  
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="http://www.luxuryretreats.com/homeowner?src=%%jobid%%&utm_source=ExactTarget&utm_medium=email&utm_campaign=%%view_email_url%%" target="_blank">List Your Property</a>  |  
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/privacy-terms?src=%%jobid%%&utm_source=ExactTarget&utm_medium=email&utm_campaign=%%view_email_url%%" target="_blank">Privacy</a>
+                    </p>
+                    <p class="footerText" style="font-size: 12px;font-family:'Montserrat','Proxima Nova Light',Segoe UI;line-height: 200%;">
+                        We want you to hear about what's just right for you. Update your email preferences here.<br/>
+                        If you want to manage your email subscription, please click here.<br/>
+                        Luxury Retreats | 2210–5530 Rue Saint Patrick | Montréal, QC H4E 1AE<br/>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="luxuryretreats.com">luxuryretreats.com</a><br/>
+                    </p>
+                    <p class="monogram" style="width: 100px;height:100px;margin: 50px auto;"><img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/monogram-circle.png" style="width:auto;height:auto;display:inline-block;"></p>
+                </div>
+	        </td>
+	    </tr>
+    <!-- Footer -->
+    	<tr><td><font face="verdana" size="1" color="#444444">This email was sent by: <b>%%Member_Busname%%</b><br>%%Member_Addr%% %%Member_City%%, %%Member_State%%, %%Member_PostalCode%%, %%Member_Country%%<br><a style="cursor: pointer;text-decoration: none;color:#252525;" href="%%profile_center_url%%" alias="Update Profile">Update Profile</a><br></font><custom name="opencounter" type="tracking"></td></tr>
+	</tbody>
+</table>

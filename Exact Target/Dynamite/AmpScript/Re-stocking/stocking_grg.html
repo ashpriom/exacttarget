@@ -1,0 +1,1829 @@
+%%[
+IF NOT EMPTY(cust_original_ord_no) THEN
+SET @cust_ord_no = cust_original_ord_no
+ELSE
+SET @cust_ord_no = cust_ord_no
+ENDIF
+
+SET @OrderFeed = LookupOrderedRows("ENT.Order_Confirmation_Header_DE", 1, "cust_ord_no desc",'cust_ord_no', @cust_ord_no)
+SET @OrderCount = rowcount(@OrderFeed)
+
+IF @OrderCount > 0 THEN 
+SET @order = Row(@OrderFeed,1)
+SET @OrderItemsFeed = LookupOrderedRows("ENT.Order_Confirmation_Details_DE", 0, "item asc",'cust_ord_no', @cust_ord_no)
+SET @OrderItemsCount = rowcount(@OrderItemsFeed)
+ENDIF
+]%%
+
+%%[ 
+IF FIELD(@order, 'LANGUAGE') == 'EN' THEN 
+SET @countryUrl = CONCAT('/',lowercase(FIELD(@order, 'COUNTRY')),'/')
+ELSE 
+SET @countryUrl = '/fr-ca/'
+ENDIF
+]%%
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<style type="text/css">
+		* {	margin-top: 0px;margin-bottom: 0px;	padding: 0px;border: none;	line-height: normal;	outline: none;	list-style: none;	font-family: Arial, Helvetica, sans-serif;
+			-webkit-text-size-adjust: none;}
+			body {	margin-top: 0 !important;	margin-bottom: 0 !important;	padding-top: 0 !important;	padding-bottom: 0 !important;	width: 100% !important;	-webkit-text-size-adjust: 100% !important;	-ms-text-size-adjust: 100% !important;	-webkit-font-smoothing: antialiased !important;}
+			img {	border: 0 !important;	outline: none !important;}
+			table {	border-collapse: collapse;	mso-table-lspace: 0px;	mso-table-rspace: 0px;}
+			td {	border-collapse: collapse;	mso-line-height-rule: exactly;}
+			.ExternalClass * {	line-height: 100%}
+			span {	border-collapse: collapse;	mso-line-height-rule: exactly;}
+			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+				line-height: 100%;
+			}
+			@media only screen and (max-width: 480px) {
+				.img_size { width: 100%; }
+				table[class=block] {    width: 100% !important;}
+				table[class=full] {	width: 100% !important;}
+				td[class=hide] { display: none !important;}
+				td[class=sides] { width: 15px !important;}
+				td[class=sides_x]{ width: 20px !important;}
+				td[class=heights] {	height: 15px !important;}
+				td[class=padding_top] {	padding-top: 15px !important;}
+				br[class=br]{ display:none !important;}
+				.lo_size { width:290px !important; height:auto !important;}
+				table[class=social_section] { width:300px !important;}
+			}
+			@media only screen and (min-width: 480px) and (max-width: 599px) {
+				table[class=block] {    width: 47% !important;}
+				table[class=full] {	width: 100% !important;}
+				td[class=hide] {	display: none !important;}
+				td[class=sides] {	width: 15px !important;}
+				td[class=sides_x]{ width: 35px !important;}
+				td[class=heights] {	height: 15px !important;}
+				td[class=padding_top] {	padding-top: 15px !important;}
+				br[class=br]{ display:none !important;}
+				.lo_size { width:383px !important; height:auto !important;}
+				table[class=social_section] { width:325px !important;}
+			}
+		</style>
+	</head>
+
+	<body marginwidth="0" marginheight="0" bgcolor="#e5e5e5" style="font-family:Arial, Helvetica, sans-serif; color:#000000; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased;" offset="0" topmargin="0" leftmargin="0">
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td bgcolor="#e5e5e5">
+					<table width="620" border="0" cellspacing="0" cellpadding="0" align="center" class="full">
+						<tr>
+							<td bgcolor="#ffffff">
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td height="25" bgcolor="#e5e5e5" class="hide">&nbsp;</td>
+									</tr>
+									<tr>
+										<td height="60">&nbsp;</td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td width="118" class="hide">&nbsp;</td>
+													<td align="center">
+														<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+															<tr>
+																<td align="center"><a href="%%=RedirectTo(CONCAT('http://www.garageclothing.com',@countryUrl))=%%" target="_blank"><img src="http://image.email.garageclothing.com/lib/fe9812717060047976/m/9/tw_logo.jpg" width="238" height="43" border="0" style="display:block;" /></a></td>
+															</tr>
+														</table>
+													</td>
+													<td width="119" class="hide">&nbsp;</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="58">&nbsp;</td>
+									</tr>
+
+									%%[
+									SET @OrderFeed = LookupOrderedRows("ENT.Order_Confirmation_Header_DE", 1, "cust_ord_no desc",'cust_ord_no', @cust_ord_no)
+									SET @OrderCount = rowcount(@OrderFeed)
+
+									SET @CreditFeed = LookupOrderedRows("ENT.Order_Credit_Header_DE", 1, "cust_ord_no desc",'cust_original_ord_no', @cust_ord_no)
+									SET @CreditCount = rowcount(@CreditFeed)
+
+									IF @OrderCount > 0 THEN 
+									SET @order = Row(@OrderFeed,1)
+									SET @OrderItemsFeed = LookupOrderedRows("ENT.Order_Confirmation_Details_DE", 0, "item asc",'cust_ord_no', @cust_ord_no)
+									SET @OrderItemsCount = rowcount(@OrderItemsFeed)
+									ENDIF 
+
+									IF @CreditCount > 0 THEN 
+									SET @credit = Row(@CreditFeed,1)
+									ENDIF 
+
+									]%%
+
+									%%[ IF FIELD(@order, 'LANGUAGE') == 'EN' THEN 
+									SET @countryUrl = CONCAT('/',lowercase(FIELD(@order, 'COUNTRY')),'/')
+									]%%
+									<tr>
+										<td height="45">&nbsp;<custom name="opencounter" type="tracking"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td width="37" class="hide">&nbsp;</td>
+													<td>
+														<table width="100%" border="0" cellspacing="0" cellpadding="0">
+															%%[IF NOT EMPTY(FIELD(@order, 'store_number')) THEN]%%
+																%%[
+																	SET @OrderFeed = LookupOrderedRows("ENT.Order_Confirmation_Header_DE", 1, "cust_ord_no desc",'cust_ord_no', @cust_ord_no)
+																	SET @OrderCount = rowcount(@OrderFeed)
+
+																	IF @OrderCount > 0 THEN 
+																		SET @order = Row(@OrderFeed,1)
+																		SET @OrderItemsFeed = LookupOrderedRows("ENT.Order_Confirmation_Details_DE", 0, "item asc",'cust_ord_no', @cust_ord_no)
+																		SET @OrderItemsCount = rowcount(@OrderItemsFeed)
+																	ENDIF
+																	
+																	SET @totalorderamt = 0
+																	SET @OrderAmtArray = BuildRowsetFromString(FIELD(@order, 'payment_amt'), '|')
+																	FOR @x = 1 TO ROWCOUNT(@OrderAmtArray) DO 
+																		SET @totalorderamt = ADD(FIELD(Row(@OrderAmtArray,@x),1),@totalorderamt)
+																	NEXT @x
+																]%%
+
+																%%[
+																	SET @CreditFeed = LookupOrderedRows("ENT.Order_Credit_Header_DE", 1, "cust_ord_no desc",'cust_original_ord_no', @cust_ord_no)
+																	SET @CreditCount = rowcount(@CreditFeed)
+
+																	IF @CreditCount > 0 THEN 
+																		SET @credit = Row(@CreditFeed,1)
+																	ENDIF 
+																	
+																	SET @totalcredit = 0
+																	SET @CreditArray = BuildRowsetFromString(FIELD(@credit, 'ord_total_amt'), '|')
+																	FOR @x = 1 TO ROWCOUNT(@CreditArray) DO 
+																		SET @totalcredit = ADD(FIELD(Row(@CreditArray,@x),1),@totalcredit)
+																	NEXT @x
+																]%%
+
+															%%[IF Subtract(@totalorderamt, @totalcredit) <= 10.45 THEN]%%
+															<tr>
+																<td>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<td height="10" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td width="15" class="sides">&nbsp;</td>
+																						<td>
+																							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																								<tr>
+																								<td style="font-family: Helvetica, Arial; font-size:12px; line-height:16px; color:black;">Hi %%=V(FIELD(@order, 'bill_to_first_name'))=%%,<br />
+																										Unfortunately, as your order was not picked up within the specified time
+																										period of 15 days, we have shipped your item(s) back to our Distribution
+																										Centre. As described in our <a style="font-weight: bold;" href="http://www.garageclothing.com/ca/community/return-policy">"Pickup in-store" Return Policy</a>, orders must be picked up in-store within 15 days from the moment we notify you that your
+																										pickup is ready. Please note that a return postage fee of $9.00 (plus
+																										applicable taxes) was deducted from your total return to cover shipping
+																										costs.</td>
+																									</tr>
+																								</table>
+																							</td>
+																							<td width="15" class="sides">&nbsp;</td>
+																						</tr>
+																					</table>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td height="10" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																%%[ ENDIF ]%%
+															%%[ ENDIF ]%%
+															</table>
+														</td>
+														<td width="37" class="hide">&nbsp;</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td height="37">&nbsp;</td>
+										</tr>
+										<tr>
+											<td>
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td width="37" class="hide">&nbsp;</td>
+														<td><h2>Original Order: %%[IF NOT EMPTY(cust_original_ord_no) THEN
+																SET @cust_ord_no = cust_original_ord_no
+																ELSE
+																SET @cust_ord_no = cust_ord_no
+																ENDIF]%% %%=V(@cust_ord_no)=%%</h2>
+															</td>
+															<td width="37" class="hide">&nbsp;</td>
+														</tr>
+													</table>
+													<br />
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td width="37" class="hide">&nbsp;</td>
+															<td>
+																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td bgcolor="#ededed">
+																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td height="45">&nbsp;</td>
+																				</tr>
+																				%%[
+																				IF @OrderItemsCount > 0 THEN 
+																				FOR @i = 1 TO @OrderItemsCount DO
+																				SET @orderitem = Row(@OrderItemsFeed,@i)
+																				SET @OrderAdjustmentsFeed = LookupOrderedRows("ENT.Order_Confirmation_Adjustments_DE", 0, "commerce_item_id asc",'commerce_item_id', FIELD(@orderitem, 'item'),'cust_ord_no', FIELD(@order, 'cust_ord_no'))
+																				SET @OrderAdjustmentsCount = 0 /* rowcount(@OrderAdjustmentsFeed) */
+																				]%%
+																				<tr>
+																					<td>
+																						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																							<tr>
+																								<td width="20" class="sides">&nbsp;</td>
+																								<td>
+																									<table width="222" border="0" cellspacing="0" cellpadding="0" align="left" class="block">
+																										<tr>
+																											<td>
+																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																													<tr>
+																														<td><a href="#" target="_blank"><img src="%%=V(REPLACE(FIELD(@orderitem, 'PRODUCT_IMAGE_URL'),'54x61','666x1000'))=%%" width="222" class="img_size" alt="" border="0" style="display:block;" /></a></td>
+																													</tr>
+																												</table>
+																											</td>
+																										</tr>
+																									</table>
+																									<table width="222" border="0" cellspacing="0" cellpadding="0" align="right" class="block">
+																										<tr>
+																											<td class="padding_top_x">
+																												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																													<tr>
+																														<td style="font-family: Helvetica, Arial; font-size:16px; line-height:21px; color:#000000; font-weight:600;">%%=V(FIELD(@orderitem, 'item_web_desc'))=%%</td>
+																													</tr>
+																													<tr>
+																														<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000;">Color: %%=V(FIELD(@orderitem, 'web_color_desc'))=%%<br />
+																															Size: %%=V(FIELD(@orderitem, 'item_size'))=%%</td>
+																														</tr>
+																														<tr>
+																															<td height="16" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																														</tr>
+																														<tr>
+																															<td>
+																																<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																																	<tr>
+																																		<td width="140" valign="top">
+																																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																																				<tr>
+																																					<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000;">Quantity: %%=V(FIELD(@orderitem, 'qty_ordered'))=%%</td>
+																																				</tr>
+																																				<tr>
+																																					<td style="font-family: Helvetica, Arial; font-size:12px; line-height:17px; color:#000000;">
+																																						%%[
+																																						IF @OrderAdjustmentsCount > 0 THEN 
+																																						FOR @k = 1 TO @OrderAdjustmentsCount DO
+																																						SET @orderadj = Row(@OrderAdjustmentsFeed,@k)
+																																						]%%
+																																						%%=V(FIELD(@orderadj,'adjustment_coupon_name'))=%%<br />
+																																						%%[ 
+																																						next @k
+																																						ENDIF 
+																																						]%%
+
+																																						%%[ IF NOT SUBSTRING(FIELD(@orderitem, 'total_line_discount'),1,1) == '0' THEN ]%%
+																																						Discount:  
+																																						%%[ ENDIF ]%%
+																																					</td>
+																																				</tr>
+																																				<tr>
+																																					<td height="17" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																																				</tr>
+																																				<tr>
+																																					<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; font-weight:bold;">Total:</td>
+																																				</tr>
+																																			</table>
+																																		</td>
+																																		<td valign="top">
+																																			<table width="82" border="0" cellspacing="0" cellpadding="0">
+																																				<tr>
+																																					<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; text-align:right;">%%=FormatCurrency(FIELD(@orderitem, 'regular_unit_retail'),"en-US")=%%</td>
+																																				</tr>
+																																				<tr>
+																																					<td style="font-family: Helvetica, Arial; font-size:12px; line-height:17px; color:#000000; text-align:right;">
+																																						%%[
+																																						IF @OrderAdjustmentsCount > 0 THEN 
+																																						FOR @k = 1 TO @OrderAdjustmentsCount DO
+																																						SET @orderadj = Row(@OrderAdjustmentsFeed,@k)
+																																						]%%
+																																						%%=FormatCurrency(FIELD(@orderadj,'adjustment_discount'),"en-US")=%%<br />
+																																						%%[ 
+																																						next @k
+																																						ENDIF 
+																																						]%%
+
+																																						%%[ IF NOT SUBSTRING(FIELD(@orderitem, 'total_line_discount'),1,1) == '0' THEN ]%%
+																																						%%=FormatCurrency(FIELD(@orderitem, 'total_line_discount'),"en-US")=%%
+																																						%%[ ENDIF ]%%
+																																					</td>
+																																				</tr>
+																																				<tr>
+																																					<td height="17" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																																				</tr>
+																																				<tr>
+																																					<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; font-weight:bold; text-align:right;">%%=FormatCurrency(FIELD(@orderitem, 'line_total'),"en-US")=%%</td>
+																																				</tr>
+																																			</table>
+																																		</td>
+																																	</tr>
+																																</table>
+																															</td>
+																														</tr>
+																													</table>
+																												</td>
+																											</tr>
+																										</table>
+																									</td>
+																									<td width="25" class="sides">&nbsp;</td>
+																								</tr>
+																							</table>
+																						</td>
+																					</tr>
+																					<tr>
+																						<td height="40">&nbsp;</td>
+																					</tr>
+																					%%[ 
+																					next @i
+																					ENDIF 
+																					]%%
+																					<tr>
+																						<td>
+																							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																								<tr>
+																									<td width="20" class="sides">&nbsp;</td>
+																									<td>
+																										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																											<tr>
+																												<td style="font-family: Helvetica, Arial; font-size:16px; line-height:20px; color:#000000; font-weight:bold;">Summary</td>
+																											</tr>
+																											<tr>
+																												<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																											</tr>
+																											<tr>
+																												<td>
+																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																														<tr>
+																															<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Subtotal</td>
+																															<td>&nbsp;</td>
+																															<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=FormatCurrency(FIELD(@order, 'ord_total_amt'),"en-US")=%%</td>
+																														</tr>
+																													</table>
+																												</td>
+																											</tr>
+																											<tr>
+																												<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																											</tr>
+																											<tr>
+																												<td>
+																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																														%%[
+																														IF FIELD(@order, 'total_shipping_amt') < 1 THEN
+																														SET @totalShippingAmount = 'FREE'
+																														ELSE
+																														SET @totalShippingAmount = FormatCurrency(FIELD(@order, 'total_shipping_amt'),"en-US")
+																														ENDIF
+																														]%%
+																														<tr>
+																															<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Shipping</td>
+																															<td>&nbsp;</td>
+																															<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=V(@totalShippingAmount)=%%</td>
+																														</tr>
+																													</table>
+																												</td>
+																											</tr>
+																											<tr>
+																												<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																											</tr>
+																											<tr>
+																												<td>
+																													%%[ 
+																													SET @totaltax = 0
+																													SET @TaxesArray = BuildRowsetFromString(FIELD(@order, 'tax_amt'), '|')
+																													FOR @x = 1 TO ROWCOUNT(@TaxesArray) DO 
+																													SET @totaltax = ADD(FIELD(Row(@TaxesArray,@x),1),@totaltax)
+																													NEXT @x
+																													SET @totaltax = FormatCurrency(@totaltax,"en-US")
+																													]%%
+																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																														<tr>
+																															<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Total Sales Tax</td>
+																															<td>&nbsp;</td>
+																															<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=V(@totaltax)=%%</td>
+																														</tr>
+																													</table>
+																												</td>
+																											</tr>
+																											<tr>
+																												<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																											</tr>
+																											<tr>
+																												<td>
+																													%%[ 
+																													SET @totalorderamt = 0
+																													SET @OrderAmtArray = BuildRowsetFromString(FIELD(@order, 'payment_amt'), '|')
+																													FOR @x = 1 TO ROWCOUNT(@OrderAmtArray) DO 
+																													SET @totalorderamt = ADD(FIELD(Row(@OrderAmtArray,@x),1),@totalorderamt)
+																													NEXT @x
+																													SET @totalorderamt = FormatCurrency(@totalorderamt,"en-US")
+																													]%%
+																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																														<tr>
+																															<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Order Total</td>
+																															<td>&nbsp;</td>
+																															<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=V(@totalorderamt)=%%</td>
+																														</tr>
+																													</table>
+																												</td>
+																											</tr>
+																										</table>
+																									</td>
+																									<td width="20" class="sides">&nbsp;</td>
+																								</tr>
+																							</table>
+																						</td>
+																					</tr>
+																					<tr>
+																						<td height="42">&nbsp;</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+																<td width="37" class="hide">&nbsp;</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td height="37">&nbsp;</td>
+												</tr>
+												<tr>
+													<td>
+														<table width="100%" border="0" cellspacing="0" cellpadding="0">
+															<tr>
+																<td width="37" class="hide">&nbsp;</td>
+																<td><h2>Your Credit: %%[SET @RMA_NO = cust_ord_no]%% %%=v(@RMA_NO)=%%</h2></td>
+																<td width="37" class="hide">&nbsp;</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<table width="100%" border="0" cellspacing="0" cellpadding="0">
+															<tr>
+																<td width="37" class="hide">&nbsp;</td>
+																<td>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																		%%[ 
+																		SET @PaymentTypeArray = BuildRowsetFromString(FIELD(@credit, 'payment_type_group'), '|')
+																		SET @PaymentTypeIdArray = BuildRowsetFromString(FIELD(@credit, 'payment_type_id'), '|')
+																		FOR @x = 1 TO ROWCOUNT(@PaymentTypeArray) DO 
+																		SET @PaymentGroup = FIELD(Row(@PaymentTypeArray,@x),1)
+																		SET @PaymentId = FIELD(Row(@PaymentTypeIdArray,@x),1)
+																		]%%
+																		<tr>
+																			<td valign="middle" align="left" width="47" style="font-size:12px; line-height:17px;">
+																				%%[ IF @PaymentGroup != 'PAYPAL' AND @PaymentGroup != 'INTERAC' AND @PaymentGroup != 'CARTE CADEAUX' AND @PaymentGroup != 'GIFT CARD' THEN ]%%
+																				<img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/CC_%%=V(@PaymentGroup)=%%.png" width="42" alt="Visa" border="0" style="display:block;" />
+																				%%[ ELSE ]%%
+																				%%=V(@PaymentGroup)=%%
+																				%%[ ENDIF ]%%
+																			</td>
+																			%%[ IF @PaymentGroup != 'PAYPAL' AND @PaymentGroup != 'INTERAC' AND @PaymentGroup != 'CARTE CADEAUX' AND @PaymentGroup != 'GIFT CARD' THEN ]%%
+																			<td valign="middle" align="left" style="font-family: Helvetica, Arial; font-size:15px; line-height:17px; color:#000000;">
+																				[%%=V(@PaymentId)=%%]
+																			</td>
+																			%%[ ENDIF ]%%
+
+																			%%[ IF @PaymentGroup == 'CARTE CADEAUX' OR @PaymentGroup == 'GIFT CARD' THEN ]%%
+																			<td valign="middle" align="left" style="font-family: Helvetica, Arial; font-size:12px; line-height:17px; color:#000000;">
+																				%%=V(@PaymentId)=%%
+																			</td>
+																			%%[ ENDIF ]%%
+																		</tr>
+																		%%[
+																		NEXT @x
+																		]%%
+																	</table> <br />
+																	%%[
+																	SET @totalcredit = 0
+																	SET @CreditArray = BuildRowsetFromString(FIELD(@credit, 'ord_total_amt'), '|')
+																	FOR @x = 1 TO ROWCOUNT(@CreditArray) DO 
+																	SET @totalcredit = ADD(FIELD(Row(@CreditArray,@x),1),@totalcredit)
+																	NEXT @x
+																	SET @totalcredit = FormatCurrency(@totalcredit, 'en-US')
+																	]%%
+																	<p style="font-family: Helvetica, Arial; font-size:1.2em; line-height:17px; color:#000000;">
+																		%%=V(@totalcredit)=%%
+																	</p>
+																	<br />
+																</td>
+																<td width="37" class="hide">&nbsp;</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<table width="100%" border="0" cellspacing="0" cellpadding="0">
+															<tr>
+																<td width="37" class="hide">&nbsp;</td>
+																<td>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<td bgcolor="#ededed">
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td height="45">&nbsp;</td>
+																					</tr>
+																					%%[
+																					IF @OrderItemsCount > 0 THEN 
+																					FOR @i = 1 TO @OrderItemsCount DO
+																					SET @orderitem = Row(@OrderItemsFeed,@i)
+																					SET @OrderCreditFeed = LookupOrderedRows("ENT.Order_Credit_Details_DE", 0, "item asc",'item', FIELD(@orderitem, 'item'),'cust_ord_no', FIELD(@credit, 'cust_ord_no'))
+																					SET @OrderAdjustmentsFeed = LookupOrderedRows("ENT.Order_Confirmation_Adjustments_DE", 0, "commerce_item_id asc",'commerce_item_id', FIELD(@orderitem, 'item'),'cust_ord_no', FIELD(@order, 'cust_ord_no'))
+																					SET @OrderAdjustmentsCount = 0 /* rowcount(@OrderAdjustmentsFeed) */
+																					IF rowcount(@OrderCreditFeed) > 0 THEN
+																					]%%
+																					<tr>
+																						<td>
+																							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																								<tr>
+																									<td width="20" class="sides">&nbsp;</td>
+																									<td>
+																										<table width="222" border="0" cellspacing="0" cellpadding="0" align="left" class="block">
+																											<tr>
+																												<td>
+																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																														<tr>
+																															<td><a href="#" target="_blank"><img src="%%=V(REPLACE(FIELD(@orderitem, 'PRODUCT_IMAGE_URL'),'54x61','666x1000'))=%%" width="222" class="img_size" alt="" border="0" style="display:block;" /></a></td>
+																														</tr>
+																													</table>
+																												</td>
+																											</tr>
+																										</table>
+																										<table width="222" border="0" cellspacing="0" cellpadding="0" align="right" class="block">
+																											<tr>
+																												<td class="padding_top_x">
+																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																														<tr>
+																															<td style="font-family: Helvetica, Arial; font-size:16px; line-height:21px; color:#000000; font-weight:600;">%%=V(FIELD(@orderitem, 'item_web_desc'))=%%</td>
+																														</tr>
+																														<tr>
+																															<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000;">Color: %%=V(FIELD(@orderitem, 'web_color_desc'))=%%<br />
+																																Size: %%=V(FIELD(@orderitem, 'item_size'))=%%</td>
+																															</tr>
+																															<tr>
+																																<td>
+																																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																																		<tr>
+																																			<td width="140" valign="top">
+																																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																																					<tr>
+																																						<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000;">Quantity: %%=V(FIELD(@orderitem, 'qty_ordered'))=%%</td>
+																																					</tr>
+																																					<tr>
+																																						<td style="font-family: Helvetica, Arial; font-size:12px; line-height:17px; color:#000000;">
+                                                                                                                                        <!--%%[
+                                                                                                                                        IF @OrderAdjustmentsCount > 0 THEN 
+                                                                                                                                            FOR @k = 1 TO @OrderAdjustmentsCount DO
+                                                                                                                                                SET @orderadj = Row(@OrderAdjustmentsFeed,@k)
+                                                                                                                                        ]%%
+                                                                                                                                            %%=V(FIELD(@orderadj,'adjustment_coupon_name'))=%%<br />
+                                                                                                                                        %%[ 
+                                                                                                                                            next @k
+                                                                                                                                            ENDIF 
+                                                                                                                                        ]%%
+                                                                                                                                        
+                                                                                                                                        %%[ IF NOT SUBSTRING(FIELD(@orderitem, 'total_line_discount'),1,1) == '0' THEN ]%%
+                                                                                                                                        Discount:  
+                                                                                                                                        %%[ ENDIF ]%%-->
+                                                                                                                                    </td>
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                	<td height="17" style="font-size:0px; line-height:0px;">&nbsp;</td>
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                	<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; font-weight:bold;"><!--Total:--></td>
+                                                                                                                                </tr>
+                                                                                                                            </table>
+                                                                                                                        </td>
+                                                                                                                        <td valign="top">
+                                                                                                                        	<table width="82" border="0" cellspacing="0" cellpadding="0">
+                                                                                                                        		<tr>
+                                                                                                                        			<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; text-align:right;"><!--%%=FormatCurrency(FIELD(@orderitem, 'regular_unit_retail'),"en-US")=%%--></td>
+                                                                                                                        		</tr>
+                                                                                                                        		<tr>
+                                                                                                                        			<td style="font-family: Helvetica, Arial; font-size:12px; line-height:17px; color:#000000; text-align:right;">
+                                                                                                                                            <!--%%[
+                                                                                                                                                IF @OrderAdjustmentsCount > 0 THEN 
+                                                                                                                                                FOR @k = 1 TO @OrderAdjustmentsCount DO
+                                                                                                                                                SET @orderadj = Row(@OrderAdjustmentsFeed,@k)
+                                                                                                                                                ]%%
+                                                                                                                                                %%=FormatCurrency(FIELD(@orderadj,'adjustment_discount'),"en-US")=%%<br />
+                                                                                                                                                %%[ 
+                                                                                                                                                next @k
+                                                                                                                                                ENDIF 
+                                                                                                                                            ]%%
+                                                                                                                                            
+                                                                                                                                            %%[ IF NOT SUBSTRING(FIELD(@orderitem, 'total_line_discount'),1,1) == '0' THEN ]%%
+                                                                                                                                                %%=FormatCurrency(FIELD(@orderitem, 'total_line_discount'),"en-US")=%%
+                                                                                                                                                %%[ ENDIF ]%%-->
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+                                                                                                                                        <tr>
+                                                                                                                                        	<td height="17" style="font-size:0px; line-height:0px;">&nbsp;</td>
+                                                                                                                                        </tr>
+                                                                                                                                        <tr>
+                                                                                                                                        	<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; font-weight:bold; text-align:right;"><!--%%=FormatCurrency(FIELD(@orderitem, 'line_total'),"en-US")=%%--></td>
+                                                                                                                                        </tr>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </table>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="25" class="sides">&nbsp;</td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                            	<td height="40">&nbsp;</td>
+                                                                            </tr>
+                                                                            %%[ 
+                                                                            ENDIF
+                                                                            next @i
+                                                                            ENDIF 
+                                                                            ]%%
+                                                                            <tr>
+                                                                            	<td>
+                                                                            		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                            			<tr>
+                                                                            				<td width="20" class="sides">&nbsp;</td>
+                                                                            				<td>
+                                                                            					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                            						<tr>
+                                                                            							<td style="font-family: Helvetica, Arial; font-size:16px; line-height:20px; color:#000000; font-weight:bold;">Summary</td>
+                                                                            						</tr>
+                                                                            						<tr>
+                                                                            							<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+                                                                            						</tr>
+										%%[ 
+											SET @restockfee = 0
+											
+											SET @OrderFeed = LookupOrderedRows("ENT.Order_Confirmation_Header_DE", 1, "cust_ord_no desc",'cust_ord_no', @cust_ord_no)
+											SET @OrderCount = rowcount(@OrderFeed)
+
+											IF @OrderCount > 0 THEN 
+												SET @order = Row(@OrderFeed,1)
+												SET @OrderItemsFeed = LookupOrderedRows("ENT.Order_Confirmation_Details_DE", 0, "item asc",'cust_ord_no', @cust_ord_no)
+												SET @OrderItemsCount = rowcount(@OrderItemsFeed)
+											ENDIF
+											
+											SET @totalorderamt = 0
+											SET @OrderAmtArray = BuildRowsetFromString(FIELD(@order, 'payment_amt'), '|')
+											FOR @x = 1 TO ROWCOUNT(@OrderAmtArray) DO 
+												SET @totalorderamt = ADD(FIELD(Row(@OrderAmtArray,@x),1),@totalorderamt)
+											NEXT @x
+											
+											SET @CreditFeed = LookupOrderedRows("ENT.Order_Credit_Header_DE", 1, "cust_ord_no desc",'cust_original_ord_no', @cust_ord_no)
+											SET @CreditCount = rowcount(@CreditFeed)
+
+											IF @CreditCount > 0 THEN 
+												SET @credit = Row(@CreditFeed,1)
+											ENDIF 
+											
+											SET @totalcredit = 0
+											SET @CreditArray = BuildRowsetFromString(FIELD(@credit, 'ord_total_amt'), '|')
+											FOR @x = 1 TO ROWCOUNT(@CreditArray) DO 
+												SET @totalcredit = ADD(FIELD(Row(@CreditArray,@x),1),@totalcredit)
+											NEXT @x
+										
+											SET @differenceAmount = Subtract(@totalorderamt, @totalcredit)
+											SET @differenceAmountFormatted = FormatCurrency(@differenceAmount,"en-US")
+											IF @differenceAmount <= 10.45 AND NOT EMPTY(FIELD(@order, 'store_number')) THEN 
+												IF @totalorderamt < 9 THEN 
+													@restockfee = @totalorderamt 
+												ELSE 
+													@restockfee = 9
+												ENDIF
+											
+											SET @restockfeeFormatted = FormatCurrency(@restockfee,"en-US")
+										]%%
+										<tr>
+											<td>
+
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Return postage fee of $9.00 plus applicable taxes</td>
+														<td>&nbsp;</td>
+														<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; "><!--%%=V(@restockfeeFormatted)=%%<br/>-->- %%=V(@differenceAmountFormatted)=%%</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										%%[ ENDIF ]]%%
+										<!--<tr>
+											Debug [%%=V(@restockfee)=%%]
+											Debug [%%=V(@differenceAmountFormatted)=%%]
+										</tr>-->
+										%%[
+										SET @totalcredit = FormatCurrency(Subtract(@totalcredit,@restockfee),"en-US")
+										]%%
+										<!-- Subtotal and Sales Tax -->
+										<tr>
+											<td>
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Subtotal</td>
+														<td>&nbsp;</td>
+														<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=FormatCurrency(FIELD(@credit, 'ord_total_amt'),"en-US")=%%</td>
+													</tr>
+													<tr>
+														<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Total Sales Taxes</td>
+														<td>&nbsp;</td>
+														<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%[ 
+			                                                            SET @totaltax = 0
+			                                                            SET @TaxesArray = BuildRowsetFromString(FIELD(@credit, 'tax_amt'), '|')
+			                                                            FOR @x = 1 TO ROWCOUNT(@TaxesArray) DO 
+			                                                                SET @totaltax = ADD(FIELD(Row(@TaxesArray,@x),1),@totaltax)
+			                                                            NEXT @x
+			                                                            SET @totaltax = FormatCurrency(@totaltax,"en-US")
+			                                                        ]%%
+			                                                        %%=V(@totaltax)=%%</td>
+													</tr>
+												</table>
+											</td>
+										</tr>	
+										<!-- Subtotal and Sales Tax -->
+										<tr>
+											<td>
+
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Credit Amount</td>
+														<td>&nbsp;</td>
+														<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=V(@totalcredit)=%%</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										
+
+									</table>
+								</td>
+								<td width="20" class="sides">&nbsp;</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td height="42">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</td>
+<td width="37" class="hide">&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+	<td height="50">&nbsp;</td>
+</tr>
+<tr>
+	<td>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="37" class="sides">&nbsp;</td>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td height="41">&nbsp;</td>
+						</tr>
+						<tr>
+							<td style="font-family: Helvetica, Arial; font-size:16px; line-height:21px; color:#000000; text-align:center;"><span style="font-family: Helvetica, Arial; font-size:17px; line-height:20px; color:#000000; text-align:center; font-weight:bold;">Have any questions?</span><br />
+								Contact customer care department by <a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'helpdesk/contact.jsp'))=%%" target="_blank" style="font-family: Helvetica, Arial; font-size:16px; line-height:21px; color:#000000; text-align:center; text-decoration:underline;">email</a> or at<br class="br" />
+								%%[ IF FIELD(@order, 'COUNTRY') == 'US' THEN ]%% 1-888-342-7243 (USA) %%[ ELSE ]%% 1-888-882-1138 (Canada) %%[ ENDIF ]%%</td>
+							</tr>
+							<tr>
+								<td height="38">&nbsp;</td>
+							</tr>
+							<tr>
+								<td height="83" valign="middle" align="center" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; border:2px solid #000000; font-weight:bold;"><a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'cat/new-arrivals'))=%%" target="_blank" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; font-weight:bold; text-decoration:none;">New Arrivals</a></td>
+							</tr>
+							<tr>
+								<td height="5" style="font-size:0px; line-height:0px;">&nbsp;</td>
+							</tr>
+							<tr>
+								<td height="83" valign="middle" align="center" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; border:2px solid #000000; font-weight:bold;"><a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'cat/trending-online-exclusives'))=%%" target="_blank" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; font-weight:bold; text-decoration:none;">Online exclusive</a></td>
+							</tr>
+							<tr>
+								<td height="5" style="font-size:0px; line-height:0px;">&nbsp;</td>
+							</tr>
+							<tr>
+								<td height="83" valign="middle" align="center" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; border:2px solid #000000; font-weight:bold;"><a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'community/faq'))=%%" target="_blank" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; font-weight:bold; text-decoration:none;">FAQ</a></td>
+							</tr>
+						</table>
+					</td>
+					<td width="37" class="sides">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	%%[ ELSE ]%%
+		<tr>
+			<td height="45">&nbsp;<custom name="opencounter" type="tracking"></td>
+		</tr>
+		%%[IF NOT EMPTY(FIELD(@order, 'store_number')) THEN]%%
+			%%[
+				SET @OrderFeed = LookupOrderedRows("ENT.Order_Confirmation_Header_DE", 1, "cust_ord_no desc",'cust_ord_no', @cust_ord_no)
+				SET @OrderCount = rowcount(@OrderFeed)
+
+				IF @OrderCount > 0 THEN 
+					SET @order = Row(@OrderFeed,1)
+					SET @OrderItemsFeed = LookupOrderedRows("ENT.Order_Confirmation_Details_DE", 0, "item asc",'cust_ord_no', @cust_ord_no)
+					SET @OrderItemsCount = rowcount(@OrderItemsFeed)
+				ENDIF
+				
+				SET @totalorderamt = 0
+				SET @OrderAmtArray = BuildRowsetFromString(FIELD(@order, 'payment_amt'), '|')
+				FOR @x = 1 TO ROWCOUNT(@OrderAmtArray) DO 
+					SET @totalorderamt = ADD(FIELD(Row(@OrderAmtArray,@x),1),@totalorderamt)
+				NEXT @x
+			]%%
+
+			%%[
+				SET @CreditFeed = LookupOrderedRows("ENT.Order_Credit_Header_DE", 1, "cust_ord_no desc",'cust_original_ord_no', @cust_ord_no)
+				SET @CreditCount = rowcount(@CreditFeed)
+
+				IF @CreditCount > 0 THEN 
+					SET @credit = Row(@CreditFeed,1)
+				ENDIF 
+				
+				SET @totalcredit = 0
+				SET @CreditArray = BuildRowsetFromString(FIELD(@credit, 'ord_total_amt'), '|')
+				FOR @x = 1 TO ROWCOUNT(@CreditArray) DO 
+					SET @totalcredit = ADD(FIELD(Row(@CreditArray,@x),1),@totalcredit)
+				NEXT @x
+			]%%
+		%%[IF Subtract(@totalorderamt, @totalcredit) <= 10.45 THEN]%%
+		<tr>
+		<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="37" class="hide">&nbsp;</td>
+					<td>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td height="18" style="font-size:0px; line-height:0px;">&nbsp;</td>
+										</tr>
+										<tr>
+											<td>
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td width="15" class="sides">&nbsp;</td>
+														<td>
+															<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																<tr>
+																	<td style="font-family: Helvetica, Arial; font-size:12px; line-height:16px; color:black;">Bonjour %%=V(FIELD(@order, 'bill_to_first_name'))=%%,<br />
+																		Malheureusement, comme votre commande n’a pas été ramassée dans le
+																		délai prescrit de 15 jours, nous avons renvoyé votre marchandise à notre
+																		Centre de distribution. Tel que mentionné dans notre <a style="font-weight: bold;" href="http://www.garageclothing.com/fr-ca/community/politique-retour">Politique de retour avec cueillette en magasin</a>, les commandes doivent être ramassées en
+																		magasin dans les 15 jours suivant le moment où nous vous avisons que
+																		votre commande est prête à être ramassée. Veuillez noter que des frais de
+																		retour de 9,00 $ (taxes applicables en sus) ont été déduits de votre
+																		remboursement total pour couvrir les frais de transport.</td>
+																	</tr>
+																</table>
+															</td>
+															<td width="15" class="sides">&nbsp;</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td height="21">&nbsp;</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width="37" class="hide">&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		%%[ ENDIF ]%%%%[ ENDIF ]%%
+		<tr>
+			<td height="32">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="37" class="hide">&nbsp;</td>
+						<td><h2>Commande originale : %%[IF NOT EMPTY(cust_original_ord_no) THEN
+																SET @cust_ord_no = cust_original_ord_no
+																ELSE
+																SET @cust_ord_no = cust_ord_no
+																ENDIF]%% %%=V(@cust_ord_no)=%%</h2></td>
+						<td width="37" class="hide">&nbsp;</td>
+					</tr>
+				</table>
+				<br />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="37" class="hide">&nbsp;</td>
+						<td>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td bgcolor="#ededed">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td height="45">&nbsp;</td>
+											</tr>
+											%%[
+											IF @OrderItemsCount > 0 THEN 
+											FOR @i = 1 TO @OrderItemsCount DO
+											SET @orderitem = Row(@OrderItemsFeed,@i)
+											SET @OrderAdjustmentsFeed = LookupOrderedRows("ENT.Order_Confirmation_Adjustments_DE", 0, "commerce_item_id asc",'commerce_item_id', FIELD(@orderitem, 'item'),'cust_ord_no', FIELD(@order, 'cust_ord_no'))
+											SET @OrderAdjustmentsCount = 0 /* rowcount(@OrderAdjustmentsFeed) */
+											]%%
+											<tr>
+												<td>
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td width="20" class="sides">&nbsp;</td>
+															<td>
+																<table width="222" border="0" cellspacing="0" cellpadding="0" align="left" class="block">
+																	<tr>
+																		<td>
+																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td><a href="#" target="_blank"><img src="%%=V(REPLACE(FIELD(@orderitem, 'PRODUCT_IMAGE_URL'),'54x61','666x1000'))=%%" width="222" class="img_size" alt="" border="0" style="display:block;" /></a></td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																</table>
+																<table width="222" border="0" cellspacing="0" cellpadding="0" align="right" class="block">
+																	<tr>
+																		<td class="padding_top_x">
+																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td style="font-family: Helvetica, Arial; font-size:16px; line-height:21px; color:#000000; font-weight:600;">%%=V(FIELD(@orderitem, 'item_web_desc'))=%%</td>
+																				</tr>
+																				<tr>
+																					<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000;">Couleur : %%=V(FIELD(@orderitem, 'web_color_desc'))=%%<br />
+																						Taille : %%=V(FIELD(@orderitem, 'item_size'))=%%</td>
+																					</tr>
+																					<tr>
+																						<td height="16" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																					</tr>
+																					<tr>
+																						<td>
+																							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																								<tr>
+																									<td width="140" valign="top">
+																										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																											<tr>
+																												<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000;">Quantité : %%=V(FIELD(@orderitem, 'qty_ordered'))=%%</td>
+																											</tr>
+																											<tr>
+																												<td style="font-family: Helvetica, Arial; font-size:12px; line-height:17px; color:#000000;">
+																													%%[
+																													IF @OrderAdjustmentsCount > 0 THEN 
+																													FOR @k = 1 TO @OrderAdjustmentsCount DO
+																													SET @orderadj = Row(@OrderAdjustmentsFeed,@k)
+																													]%%
+																													%%=V(FIELD(@orderadj,'adjustment_coupon_name'))=%%<br />
+																													%%[ 
+																													next @k
+																													ENDIF 
+																													]%%
+
+																													%%[ IF NOT SUBSTRING(FIELD(@orderitem, 'total_line_discount'),1,1) == '0' THEN ]%%
+																													Rabais : 
+																													%%[ ENDIF ]%%
+
+
+																												</td>
+																											</tr>
+																											<tr>
+																												<td height="17" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																											</tr>
+																											<tr>
+																												<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; font-weight:bold;">Total:</td>
+																											</tr>
+																										</table>
+																									</td>
+																									<td valign="top">
+																										<table width="82" border="0" cellspacing="0" cellpadding="0">
+																											<tr>
+																												<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; text-align:right;">%%=FormatCurrency(FIELD(@orderitem, 'regular_unit_retail'),"fr-CA")=%%</td>
+																											</tr>
+																											<tr>
+																												<td style="font-family: Helvetica, Arial; font-size:12px; line-height:17px; color:#000000; text-align:right;">
+																													%%[
+																													IF @OrderAdjustmentsCount > 0 THEN 
+																													FOR @k = 1 TO @OrderAdjustmentsCount DO
+																													SET @orderadj = Row(@OrderAdjustmentsFeed,@k)
+																													]%%
+																													%%=FormatCurrency(FIELD(@orderadj,'adjustment_discount'),"fr-CA")=%%<br />
+																													%%[ 
+																													next @k
+																													ENDIF 
+																													]%%
+
+																													%%[ IF NOT SUBSTRING(FIELD(@orderitem, 'total_line_discount'),1,1) == '0' THEN ]%%
+																													%%=FormatCurrency(FIELD(@orderitem, 'total_line_discount'),"fr-CA")=%%
+																													%%[ ENDIF ]%%
+																												</td>
+																											</tr>
+																											<tr>
+																												<td height="17" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																											</tr>
+																											<tr>
+																												<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; font-weight:bold; text-align:right;">%%=FormatCurrency(FIELD(@orderitem, 'line_total'),"fr-CA")=%%</td>
+																											</tr>
+																										</table>
+																									</td>
+																								</tr>
+																							</table>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+																<td width="25" class="sides">&nbsp;</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td height="40">&nbsp;</td>
+												</tr>
+												%%[ 
+												next @i
+												ENDIF 
+												]%%
+												<tr>
+													<td>
+														<table width="100%" border="0" cellspacing="0" cellpadding="0">
+															<tr>
+																<td width="20" class="sides">&nbsp;</td>
+																<td>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<td style="font-family: Helvetica, Arial; font-size:16px; line-height:20px; color:#000000; font-weight:bold;">Résumé : </td>
+																		</tr>
+																		<tr>
+																			<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Sous-total : </td>
+																						<td>&nbsp;</td>
+																						<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=FormatCurrency(FIELD(@order, 'ord_total_amt'),"fr-CA")=%%</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					%%[
+																					IF FIELD(@order, 'total_shipping_amt') < 1 THEN
+																					SET @totalShippingAmount = 'GRATUIT'
+																					ELSE
+																					SET @totalShippingAmount = FormatCurrency(FIELD(@order, 'total_shipping_amt'),"fr-CA")
+																					ENDIF
+																					]%%
+																					<tr>
+																						<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Frais d'expédition :</td>
+																						<td>&nbsp;</td>
+																						<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=V(@totalShippingAmount)=%%</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				%%[ 
+																				SET @totaltax = 0
+																				SET @TaxesArray = BuildRowsetFromString(FIELD(@order, 'tax_amt'), '|')
+																				FOR @x = 1 TO ROWCOUNT(@TaxesArray) DO 
+																				SET @totaltax = ADD(FIELD(Row(@TaxesArray,@x),1),@totaltax)
+																				NEXT @x
+																				SET @totaltax = FormatCurrency(@totaltax,"fr-CA")
+																				]%%
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Taxes :</td>
+																						<td>&nbsp;</td>
+																						<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=V(@totaltax)=%%</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				%%[ 
+																				SET @totalorderamt = 0
+																				SET @OrderAmtArray = BuildRowsetFromString(FIELD(@order, 'payment_amt'), '|')
+																				FOR @x = 1 TO ROWCOUNT(@OrderAmtArray) DO 
+																				SET @totalorderamt = ADD(FIELD(Row(@OrderAmtArray,@x),1),@totalorderamt)
+																				NEXT @x
+																				SET @totalorderamt = FormatCurrency(@totalorderamt,"fr-CA")
+																				]%%
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Total :</td>
+																						<td>&nbsp;</td>
+																						<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=V(@totalorderamt)=%%</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+																<td width="20" class="sides">&nbsp;</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td height="42">&nbsp;</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td width="37" class="hide">&nbsp;</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td height="50">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="37" class="hide">&nbsp;</td>
+							<td><h2>Votre crédit : %%[SET @RMA_NO = cust_ord_no]%% %%=v(@RMA_NO)=%%</h2></td>
+							<td width="37" class="hide">&nbsp;</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="37" class="hide">&nbsp;</td>
+							<td>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									%%[ 
+									SET @PaymentTypeArray = BuildRowsetFromString(FIELD(@credit, 'payment_type_group'), '|')
+									SET @PaymentTypeIdArray = BuildRowsetFromString(FIELD(@credit, 'payment_type_id'), '|')
+									FOR @x = 1 TO ROWCOUNT(@PaymentTypeArray) DO 
+									SET @PaymentGroup = FIELD(Row(@PaymentTypeArray,@x),1)
+									SET @PaymentId = FIELD(Row(@PaymentTypeIdArray,@x),1)
+									]%%
+									<tr>
+										<td valign="middle" align="left" width="47" style="font-size:12px; line-height:17px;">
+											%%[ IF @PaymentGroup != 'PAYPAL' AND @PaymentGroup != 'INTERAC' AND @PaymentGroup != 'CARTE CADEAUX' AND @PaymentGroup != 'GIFT CARD' THEN ]%%
+											<img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/CC_%%=V(@PaymentGroup)=%%.png" width="42" alt="Visa" border="0" style="display:block;" />
+											%%[ ELSE ]%%
+											%%=V(@PaymentGroup)=%%
+											%%[ ENDIF ]%%
+										</td>
+										%%[ IF @PaymentGroup != 'PAYPAL' AND @PaymentGroup != 'INTERAC' AND @PaymentGroup != 'CARTE CADEAUX' AND @PaymentGroup != 'GIFT CARD' THEN ]%%
+										<td valign="middle" align="left" style="font-family: Helvetica, Arial; font-size:15px; line-height:17px; color:#000000;">
+											[%%=V(@PaymentId)=%%]
+										</td>
+										%%[ ENDIF ]%%
+
+										%%[ IF @PaymentGroup == 'CARTE CADEAUX' OR @PaymentGroup == 'GIFT CARD' THEN ]%%
+										<td valign="middle" align="left" style="font-family: Helvetica, Arial; font-size:12px; line-height:17px; color:#000000;">
+											%%=V(@PaymentId)=%%
+										</td>
+										%%[ ENDIF ]%%
+									</tr>
+									%%[
+									NEXT @x
+									]%%
+								</table> <br />
+								%%[
+								SET @totalcredit = 0
+								SET @CreditArray = BuildRowsetFromString(FIELD(@credit, 'ord_total_amt'), '|')
+								FOR @x = 1 TO ROWCOUNT(@CreditArray) DO 
+								SET @totalcredit = ADD(FIELD(Row(@CreditArray,@x),1),@totalcredit)
+								NEXT @x
+								SET @totalcredit = FormatCurrency(@totalcredit, 'fr-CA')
+								]%%
+								<p style="font-family: Helvetica, Arial; font-size:1.2em; line-height:17px; color:#000000;">
+									%%=V(@totalcredit)=%%
+								</p>
+								<br />
+							</td>
+							<td width="37" class="hide">&nbsp;</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="37" class="hide">&nbsp;</td>
+							<td>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td bgcolor="#ededed">
+											<table width="100%" border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td height="45">&nbsp;</td>
+												</tr>
+												%%[
+												IF @OrderItemsCount > 0 THEN 
+												FOR @i = 1 TO @OrderItemsCount DO
+												SET @orderitem = Row(@OrderItemsFeed,@i)
+												SET @OrderCreditFeed = LookupOrderedRows("ENT.Order_Credit_Details_DE", 0, "item asc",'item', FIELD(@orderitem, 'item'),'cust_ord_no', FIELD(@credit, 'cust_ord_no'))
+												SET @OrderAdjustmentsFeed = LookupOrderedRows("ENT.Order_Confirmation_Adjustments_DE", 0, "commerce_item_id asc",'commerce_item_id', FIELD(@orderitem, 'item'),'cust_ord_no', FIELD(@order, 'cust_ord_no'))
+												SET @OrderAdjustmentsCount = 0 /* rowcount(@OrderAdjustmentsFeed) */
+												IF rowcount(@OrderCreditFeed) > 0 THEN
+												]%%
+												<tr>
+													<td>
+														<table width="100%" border="0" cellspacing="0" cellpadding="0">
+															<tr>
+																<td width="20" class="sides">&nbsp;</td>
+																<td>
+																	<table width="222" border="0" cellspacing="0" cellpadding="0" align="left" class="block">
+																		<tr>
+																			<td>
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td><a href="#" target="_blank"><img src="%%=V(REPLACE(FIELD(@orderitem, 'PRODUCT_IMAGE_URL'),'54x61','666x1000'))=%%" width="222" class="img_size" alt="" border="0" style="display:block;" /></a></td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																	<table width="222" border="0" cellspacing="0" cellpadding="0" align="right" class="block">
+																		<tr>
+																			<td class="padding_top_x">
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td style="font-family: Helvetica, Arial; font-size:16px; line-height:21px; color:#000000; font-weight:600;">%%=V(FIELD(@orderitem, 'item_web_desc'))=%%</td>
+																					</tr>
+																					<tr>
+																						<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000;">Couleur : %%=V(FIELD(@orderitem, 'web_color_desc'))=%%<br />
+																							Taille : %%=V(FIELD(@orderitem, 'item_size'))=%%</td>
+																						</tr>
+																						<tr>
+																							<td>
+																								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																									<tr>
+																										<td width="140" valign="top">
+																											<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																												<tr>
+																													<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000;">Quantité : %%=V(FIELD(@orderitem, 'qty_ordered'))=%%</td>
+																												</tr>
+																												<tr>
+																													<td style="font-family: Helvetica, Arial; font-size:12px; line-height:17px; color:#000000;">
+                                                                                                                                        <!--%%[
+                                                                                                                                        IF @OrderAdjustmentsCount > 0 THEN 
+                                                                                                                                            FOR @k = 1 TO @OrderAdjustmentsCount DO
+                                                                                                                                                SET @orderadj = Row(@OrderAdjustmentsFeed,@k)
+                                                                                                                                        ]%%
+                                                                                                                                            %%=V(FIELD(@orderadj,'adjustment_coupon_name'))=%%<br />
+                                                                                                                                        %%[ 
+                                                                                                                                            next @k
+                                                                                                                                            ENDIF 
+                                                                                                                                        ]%%
+                                                                                                                                        
+                                                                                                                                        %%[ IF NOT SUBSTRING(FIELD(@orderitem, 'total_line_discount'),1,1) == '0' THEN ]%%
+                                                                                                                                        Rabais : 
+                                                                                                                                        %%[ ENDIF ]%%-->
+                                                                                                                                        
+                                                                                                                                        
+                                                                                                                                    </td>
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                	<td height="17" style="font-size:0px; line-height:0px;">&nbsp;</td>
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                	<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; font-weight:bold;"><!--Total:--></td>
+                                                                                                                                </tr>
+                                                                                                                            </table>
+                                                                                                                        </td>
+                                                                                                                        <td valign="top">
+                                                                                                                        	<table width="82" border="0" cellspacing="0" cellpadding="0">
+                                                                                                                        		<tr>
+                                                                                                                        			<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; text-align:right;"><!--%%=FormatCurrency(FIELD(@orderitem, 'regular_unit_retail'),"fr-CA")=%%--></td>
+                                                                                                                        		</tr>
+                                                                                                                        		<tr>
+                                                                                                                        			<td style="font-family: Helvetica, Arial; font-size:12px; line-height:17px; color:#000000; text-align:right;">
+                                                                                                                                            <!--%%[
+                                                                                                                                                IF @OrderAdjustmentsCount > 0 THEN 
+                                                                                                                                                FOR @k = 1 TO @OrderAdjustmentsCount DO
+                                                                                                                                                SET @orderadj = Row(@OrderAdjustmentsFeed,@k)
+                                                                                                                                                ]%%
+                                                                                                                                                %%=FormatCurrency(FIELD(@orderadj,'adjustment_discount'),"fr-CA")=%%<br />
+                                                                                                                                                %%[ 
+                                                                                                                                                next @k
+                                                                                                                                                ENDIF 
+                                                                                                                                            ]%%
+                                                                                                                                            
+                                                                                                                                            %%[ IF NOT SUBSTRING(FIELD(@orderitem, 'total_line_discount'),1,1) == '0' THEN ]%%
+                                                                                                                                                %%=FormatCurrency(FIELD(@orderitem, 'total_line_discount'),"fr-CA")=%%
+                                                                                                                                                %%[ ENDIF ]%%-->
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+                                                                                                                                        <tr>
+                                                                                                                                        	<td height="17" style="font-size:0px; line-height:0px;">&nbsp;</td>
+                                                                                                                                        </tr>
+                                                                                                                                        <tr>
+                                                                                                                                        	<td style="font-family: Helvetica, Arial; font-size:15px; line-height:20px; color:#000000; font-weight:bold; text-align:right;"><!--%%=FormatCurrency(FIELD(@orderitem, 'line_total'),"fr-CA")=%%--></td>
+                                                                                                                                        </tr>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </table>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td width="25" class="sides">&nbsp;</td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                            	<td height="40">&nbsp;</td>
+                                                                            </tr>
+                                                                            %%[ 
+                                                                            ENDIF
+                                                                            next @i
+                                                                            ENDIF 
+                                                                            ]%%
+                                                                            <tr>
+                                                                            	<td>
+                                                                            		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                            			<tr>
+                                                                            				<td width="20" class="sides">&nbsp;</td>
+                                                                            				<td>
+                                                                            					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                            						<tr>
+                                                                            							<td style="font-family: Helvetica, Arial; font-size:16px; line-height:20px; color:#000000; font-weight:bold;">Résumé : </td>
+                                                                            						</tr>
+                                                                            						<tr>
+                                                                            							<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+									</tr>
+										%%[ 
+											SET @restockfee = 0
+											
+											SET @OrderFeed = LookupOrderedRows("ENT.Order_Confirmation_Header_DE", 1, "cust_ord_no desc",'cust_ord_no', @cust_ord_no)
+											SET @OrderCount = rowcount(@OrderFeed)
+
+											IF @OrderCount > 0 THEN 
+												SET @order = Row(@OrderFeed,1)
+												SET @OrderItemsFeed = LookupOrderedRows("ENT.Order_Confirmation_Details_DE", 0, "item asc",'cust_ord_no', @cust_ord_no)
+												SET @OrderItemsCount = rowcount(@OrderItemsFeed)
+											ENDIF
+											
+											SET @totalorderamt = 0
+											SET @OrderAmtArray = BuildRowsetFromString(FIELD(@order, 'payment_amt'), '|')
+											FOR @x = 1 TO ROWCOUNT(@OrderAmtArray) DO 
+												SET @totalorderamt = ADD(FIELD(Row(@OrderAmtArray,@x),1),@totalorderamt)
+											NEXT @x
+											
+											SET @CreditFeed = LookupOrderedRows("ENT.Order_Credit_Header_DE", 1, "cust_ord_no desc",'cust_original_ord_no', @cust_ord_no)
+											SET @CreditCount = rowcount(@CreditFeed)
+
+											IF @CreditCount > 0 THEN 
+												SET @credit = Row(@CreditFeed,1)
+											ENDIF 
+											
+											SET @totalcredit = 0
+											SET @CreditArray = BuildRowsetFromString(FIELD(@credit, 'ord_total_amt'), '|')
+											FOR @x = 1 TO ROWCOUNT(@CreditArray) DO 
+												SET @totalcredit = ADD(FIELD(Row(@CreditArray,@x),1),@totalcredit)
+											NEXT @x
+										
+											SET @differenceAmount = Subtract(@totalorderamt, @totalcredit)
+											SET @differenceAmountFormatted = FormatCurrency(@differenceAmount,"fr-CA")
+
+											IF @differenceAmount <= 10.45 AND NOT EMPTY(FIELD(@order, 'store_number')) THEN 
+												IF @totalorderamt < 9 THEN 
+													@restockfee = @totalorderamt 
+												ELSE 
+													@restockfee = 9
+												ENDIF
+											
+											SET @restockfeeFormatted = FormatCurrency(@restockfee,"fr-CA")
+										]%%
+										<tr>
+											<td>
+
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Frais de retour de 9,00 $ (taxes applicables en sus) :</td>
+														<td>&nbsp;</td>
+														<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; "><!--%%=V(@restockfeeFormatted)=%%<br/>-->- %%=V(@differenceAmountFormatted)=%%</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										%%[ ENDIF ]]%%
+										<!--<tr>
+											Debug [%%=V(@restockfee)=%%]
+											Debug [%%=V(@differenceAmountFormatted)=%%]
+										</tr>-->
+										%%[
+										SET @totalcredit = FormatCurrency(Subtract(@totalcredit,@restockfee),"fr-CA")
+										]%%
+										<tr>
+											<td height="15" style="font-size:0px; line-height:0px;">&nbsp;</td>
+										</tr>
+										<!-- Subtotal and Sales Tax -->
+										<tr>
+											<td>
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Sous-total</td>
+														<td>&nbsp;</td>
+														<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=FormatCurrency(FIELD(@credit, 'ord_total_amt'),"fr-CA")=%%</td>
+													</tr>
+													<tr>
+														<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Taxes</td>
+														<td>&nbsp;</td>
+														<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%[ 
+			                                                            SET @totaltax = 0
+			                                                            SET @TaxesArray = BuildRowsetFromString(FIELD(@credit, 'tax_amt'), '|')
+			                                                            FOR @x = 1 TO ROWCOUNT(@TaxesArray) DO 
+			                                                                SET @totaltax = ADD(FIELD(Row(@TaxesArray,@x),1),@totaltax)
+			                                                            NEXT @x
+			                                                            SET @totaltax = FormatCurrency(@totaltax,"fr-CA")
+			                                                        ]%%
+			                                                        %%=V(@totaltax)=%%</td>
+													</tr>
+												</table>
+											</td>
+										</tr>	
+										<!-- Subtotal and Sales Tax -->
+										<tr>
+											<td>
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">Crédit total :</td>
+														<td>&nbsp;</td>
+														<td width="120" align="right" style="font-family: Helvetica, Arial; font-size:15px; line-height:18px; color:#000000; ">%%=V(@totalcredit)=%%</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td width="20" class="sides">&nbsp;</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td height="42">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</td>
+<td width="37" class="hide">&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+	<td height="50">&nbsp;</td>
+</tr>
+<tr>
+	<td>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="37" class="sides">&nbsp;</td>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td height="38">&nbsp;</td>
+						</tr>
+						<tr>
+							<td style="font-family: Helvetica, Arial; font-size:16px; line-height:21px; color:#000000; text-align:center;"><span style="font-family: Helvetica, Arial; font-size:17px; line-height:20px; color:#000000; text-align:center; font-weight:bold;">Vous avez des questions?</span><br />
+								Communiquez avec notre service de l’expérience client <a href="http://www.dynamiteclothing.com/fr-ca/helpdesk/contact.jsp" target="_blank" style="font-family: Helvetica, Arial; font-size:16px; line-height:21px; color:#000000; text-align:center; text-decoration:underline;">par courriel</a> ou par téléphone au 1-888-882-1138 (Canada)</td>
+							</tr>
+							<tr>
+								<td height="38">&nbsp;</td>
+							</tr>
+							<tr>
+								<td height="83" valign="middle" align="center" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; border:2px solid #000000; font-weight:bold;"><a href="http://www.dynamiteclothing.com/fr-ca/cat/nouveautes" target="_blank" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; font-weight:bold; text-decoration:none;">Nouvellement ajoutés</a></td>
+							</tr>
+							<tr>
+								<td height="5" style="font-size:0px; line-height:0px;">&nbsp;</td>
+							</tr>
+							<tr>
+								<td height="83" valign="middle" align="center" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; border:2px solid #000000; font-weight:bold;"><a href="http://www.dynamiteclothing.com/fr-ca/cat/tendances-exclusivite-en-ligne" target="_blank" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; font-weight:bold; text-decoration:none;">Exclusivités en ligne</a></td>
+							</tr>
+							<tr>
+								<td height="5" style="font-size:0px; line-height:0px;">&nbsp;</td>
+							</tr>
+							<tr>
+								<td height="83" valign="middle" align="center" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; border:2px solid #000000; font-weight:bold;"><a href="http://www.dynamiteclothing.com/fr-ca/community/faq" target="_blank" style="font-family: Helvetica, Arial; font-size:19px; line-height:21px; color:#000000; text-align:center; font-weight:bold; text-decoration:none;">FAQ</a></td>
+							</tr>
+						</table>
+					</td>
+					<td width="37" class="sides">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	%%[ ENDIF ]%%
+
+
+	%%[
+
+	SET @OrderFeed = LookupOrderedRows("ENT.Order_Confirmation_Header_DE", 1, "cust_ord_no desc",'cust_ord_no', @cust_ord_no)
+	SET @OrderCount = rowcount(@OrderFeed)
+
+	IF @OrderCount > 0 THEN 
+	SET @order = Row(@OrderFeed,1)
+	SET @OrderItemsFeed = LookupOrderedRows("ENT.Order_Confirmation_Details_DE", 0, "item asc",'cust_ord_no', @cust_ord_no)
+	SET @OrderItemsCount = rowcount(@OrderItemsFeed)
+	ENDIF
+
+	]%%
+
+	%%[ IF FIELD(@order, 'LANGUAGE') == 'EN' THEN 
+	SET @countryUrl = CONCAT('/',lowercase(FIELD(@order, 'COUNTRY')),'/')
+	]%%
+	<tr>
+		<td height="60">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="37" class="sides">&nbsp;</td>
+					<td>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td style="font-family: Helvetica, Arial; font-size:18px; line-height:23px; color:#2f2f2f; text-align:center;">Find us on social<br />
+									Love it. Share it.</td>
+								</tr>
+								<tr>
+									<td height="30">&nbsp;</td>
+								</tr>
+								<tr>
+									<td>
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td width="110" class="hide">&nbsp;</td>
+												<td>
+													<table width="325" border="0" cellspacing="0" cellpadding="0" align="center" class="social_section">
+														<tr>
+															<td align="left" width="39"><a href="https://www.facebook.com/Dynamite" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_fb.jpg" width="17" height="36" alt="Facebook" border="0" style="display:block;" /></a></td>
+															<td width="49" align="left"><a href="https://twitter.com/dynamitestyle" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_tw.jpg" width="32" height="36" alt="Twitter" border="0" style="display:block;" /></a></td>
+															<td width="57" align="left"><a href="https://www.instagram.com/dynamiteclothing/" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_insta.jpg" width="37" height="36" alt="Instagram" border="0" style="display:block;" /></a></td>
+															<td width="56" align="left"><a href="https://www.snapchat.com/add/dynamitestyle" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_p1.jpg" width="37" height="36" alt="Instagram" border="0" style="display:block;" /></a></td>
+															<td width="44" align="left"><a href="https://www.youtube.com/dynamiteclothingtv" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_tube.jpg" width="28" height="36" alt="Youtube" border="0" style="display:block;" /></a></td>
+															<td width="44" align="left"><a href="https://www.pinterest.com/DynamiteStyle/" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_pin.jpg" width="28" height="36" alt="Pinterest" border="0" style="display:block;" /></a></td>
+															<td width="36" align="left"><a href="http://blog.dynamiteclothing.com/" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_p3.jpg" width="36" height="36" alt="Facebook" border="0" style="display:block;" /></a></td>
+														</tr>
+													</table>
+												</td>
+												<td width="111" class="hide">&nbsp;</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td height="14" style="font-size:0px; line-height:0px;">&nbsp;</td>
+								</tr>
+								<tr>
+									<td style="font-family: Helvetica, Arial; font-size:19px; line-height:27px; color:#000000; text-align:center; font-weight:bold;"><a href="http://blog.dynamiteclothing.com/" target="_blank" style="font-family: Helvetica, Arial; font-size:19px; line-height:27px; color:#000000; text-align:center; font-weight:bold; text-decoration:none;">#Dynamitestyle</a></td>
+								</tr>
+								<tr>
+									<td height="34">&nbsp;</td>
+								</tr>
+								<tr>
+									<td>
+										<table width="114" border="0" cellspacing="0" cellpadding="0" align="center">
+											<tr>
+												<td width="27" align="left" valign="middle"><a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'locator/'))=%%" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_map.png" width="21" height="28" alt="" border="0" style="display:block;" /></a></td>
+												<td valign="middle" style="font-family: Helvetica, Arial; font-size:12px; line-height:14px; color:#000000; text-align:left; font-weight:bold; padding-top:1px;"><a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'locator/'))=%%" target="_blank" style="font-family: Helvetica, Arial; font-size:12px; line-height:14px; color:#000000; text-align:left; font-weight:bold; text-decoration:none;">FIND A STORE</a></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td style="font-family: Helvetica, Arial; font-size:12px; line-height:15px; color:#2f2f2f; text-align:center; padding:10px;">
+										©%%xtyear%% DYNAMITE. All rights reserved.<br />
+										<a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'community/privacy-policy'))=%%" target="_blank">Privacy Policy </a>
+										|  <a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'community/terms-and-conditions'))=%%" target="_blank">Terms and Conditions  </a>
+										|  <a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'helpdesk/contact.jsp'))=%%" target="_blank">Contact Us  </a>
+										|  <a href="%%view_email_url%%" target="_blank">Web Version</a><br />
+
+										<br />
+										%%[if FIELD(@order, 'ship_to_state') == "BC" OR FIELD(@order, 'ship_to_state') == "SK" then]%%
+										<b>Dynamite Stores Inc.</b>
+										<br />
+										22 Adelaide Street West, Suite 3600, Toronto (ON) M5H 4E3 Canada
+										<br />
+										%%[else]%%
+										Groupe Dynamite Inc<br />
+										5592, rue Ferrier, Mont-Royal, (QC) H4P 1M2 Canada
+										%%[endif]%%
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width="37" class="sides">&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td height="76">&nbsp;</td>
+		</tr>
+	</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+%%[ ELSE SET @countryUrl = '/fr-ca/' ]%%
+<tr>
+	<td height="60">&nbsp;</td>
+</tr>
+<tr>
+	<td>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="37" class="sides">&nbsp;</td>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td style="font-family: Helvetica, Arial; font-size:18px; line-height:23px; color:#2f2f2f; text-align:center;">Trouvez-nous sur les médias sociaux<br />
+								Aimez-le. Partagez-le.</td>
+							</tr>
+							<tr>
+								<td height="30">&nbsp;</td>
+							</tr>
+							<tr>
+								<td>
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td width="110" class="hide">&nbsp;</td>
+											<td>
+												<table width="325" border="0" cellspacing="0" cellpadding="0" align="center" class="social_section">
+													<tr>
+														<td align="left" width="39"><a href="https://www.facebook.com/Dynamite" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_fb.jpg" width="17" height="36" alt="Facebook" border="0" style="display:block;" /></a></td>
+														<td width="49" align="left"><a href="https://twitter.com/dynamitestyle" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_tw.jpg" width="32" height="36" alt="Twitter" border="0" style="display:block;" /></a></td>
+														<td width="57" align="left"><a href="https://www.instagram.com/dynamiteclothing/" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_insta.jpg" width="37" height="36" alt="Instagram" border="0" style="display:block;" /></a></td>
+														<td width="56" align="left"><a href="https://www.snapchat.com/add/dynamitestyle" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_p1.jpg" width="37" height="36" alt="Instagram" border="0" style="display:block;" /></a></td>
+														<td width="44" align="left"><a href="https://www.youtube.com/dynamiteclothingtv" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_tube.jpg" width="28" height="36" alt="Youtube" border="0" style="display:block;" /></a></td>
+														<td width="44" align="left"><a href="https://www.pinterest.com/DynamiteStyle/" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_pin.jpg" width="28" height="36" alt="Pinterest" border="0" style="display:block;" /></a></td>
+														<td width="36" align="left"><a href="http://blog.dynamiteclothing.com/francais" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_p3.jpg" width="36" height="36" alt="Facebook" border="0" style="display:block;" /></a></td>
+													</tr>
+												</table>
+											</td>
+											<td width="111" class="hide">&nbsp;</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td height="14" style="font-size:0px; line-height:0px;">&nbsp;</td>
+							</tr>
+							<tr>
+								<td style="font-family: Helvetica, Arial; font-size:19px; line-height:27px; color:#000000; text-align:center; font-weight:bold;"><a href="http://blog.dynamiteclothing.com/francais" target="_blank" style="font-family: Helvetica, Arial; font-size:19px; line-height:27px; color:#000000; text-align:center; font-weight:bold; text-decoration:none;">#Dynamitestyle</a></td>
+							</tr>
+							<tr>
+								<td height="34">&nbsp;</td>
+							</tr>
+							<tr>
+								<td>
+									<table width="114" border="0" cellspacing="0" cellpadding="0" align="center">
+										<tr>
+											<td width="27" align="left" valign="middle"><a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'locator/'))=%%" target="_blank"><img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/12/tw_map.png" width="21" height="28" alt="" border="0" style="display:block;" /></a></td>
+											<td valign="middle" style="font-family: Helvetica, Arial; font-size:12px; line-height:14px; color:#000000; text-align:left; font-weight:bold; padding-top:1px;"><a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'locator/'))=%%" target="_blank" style="font-family: Helvetica, Arial; font-size:12px; line-height:14px; color:#000000; text-align:left; font-weight:bold; text-decoration:none;">TROUVEZ UN MAGASIN</a></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td style="font-family: Helvetica, Arial; font-size:12px; line-height:15px; color:#2f2f2f; text-align:center; padding:10px;">
+									©%%xtyear%% DYNAMITE. Tous droits réservés.<br />
+									<a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'community/privacy-policy'))=%%" target="_blank">Politique de confidentialité </a>
+									|  <a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'community/terms-and-conditions'))=%%" target="_blank">Modalités et conditions </a>
+									|  <a href="%%=RedirectTo(CONCAT('http://www.dynamiteclothing.com',@countryUrl,'helpdesk/contact.jsp'))=%%" target="_blank">Contactez-nous  </a>
+									|  <a href="%%view_email_url%%" target="_blank">Version web</a><br />
+
+									<br />
+									%%[if FIELD(@order, 'ship_to_state') == "BC" OR FIELD(@order, 'ship_to_state') == "SK" then]%%
+									<b>Dynamite Stores Inc.</b>
+									<br />
+									22 Adelaide Street West, Suite 3600, Toronto (ON) M5H 4E3 Canada
+									<br />
+									%%[else]%%
+									Groupe Dynamite Inc<br />
+									5592, rue Ferrier, Mont-Royal, (QC) H4P 1M2 Canada
+									%%[endif]%%
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td width="37" class="sides">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td height="76">&nbsp;</td>
+	</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+%%[ ENDIF ]%%

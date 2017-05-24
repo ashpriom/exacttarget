@@ -1,0 +1,86 @@
+View this message in your 
+%%view_email_url%% 
+web browser 
+
+http://www.dynamiteclothing.com/ca/?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=LOGOHOMEPAGE_CA_EN&utm_campaign=WEEKX 
+
+http://www.dynamiteclothing.com/ca/cat/hue-crush-monaco-blue?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA1 
+
+http://www.dynamiteclothing.com/ca/zip-crepe-blouse/p/71-2766?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA2 
+
+http://www.dynamiteclothing.com/ca/jupe-midi-vase/p/71-7459?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA3 
+
+http://www.dynamiteclothing.com/ca/vernis-ongles-dynamite/p/71-9826?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA4 
+
+http://www.dynamiteclothing.com/ca/racerback-lace-bralette/p/69-1332?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA5 
+
+http://www.dynamiteclothing.com/ca/racer-back-tank-top/p/69-1270?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA6 
+
+http://www.dynamiteclothing.com/ca/rhinestone-stretch-bracelet-set/p/71-9212?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA7 
+
+http://www.dynamiteclothing.com/ca/cat/hue-crush-monaco-blue?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA10 
+
+http://www.dynamiteclothing.com/ca/cat/hue-crush-monaco-blue?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA10 
+
+http://www.dynamiteclothing.com/ca/triangle-swim-top/p/71-9866?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA8 
+
+http://www.dynamiteclothing.com/ca/high-low-tunic-tank/p/69-0641?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=ThursdayAPRIL03_0700AM_CA_EN&utm_campaign=Forgetabout50ShadesofGreyMonacoBlueisthisseasonsitcolour _CTA9 
+
+http://www.dynamiteclothing.com/ca/stores/storeLocator.jsp?utm_source=EXACT_TARGET&utm_medium=EMAIL+&utm_content=STORE_LOCATOR_CA_EN&utm_campaign=WEEKX 
+
+http://www.dynamiteclothing.com/ca/helpdesk/contact.jsp?utm_source=EXACT_TARGET&utm_medium=EMAIL+&utm_content=CUSTOMER_SERVICE_CA_EN&utm_campaign=WEEKX 
+
+https://www.facebook.com/Dynamite?sk=app_7146470109 
+
+http://instagram.com/dynamitestyle# 
+
+https://twitter.com/DynamiteStyle 
+
+http://pinterest.com/DynamiteStyle/ 
+
+http://www.dynamiteclothing.com/ca/?pop=sms 
+
+(c)2014 DYNAMITE. All rights Reserved. 
+http://www.dynamiteclothing.com/ca/community/privacy-policy?utm_source=EXACT_TARGET&utm_medium=EMAIL&utm_content=PRIVACYPOLICY_CA_EN&utm_campaign=WEEKX 
+Privacy Policy . 
+http://www.dynamiteclothing.com/ca/community/terms-and-conditions?utm_source=EXACT_TARGET&utm_medium=EMAIL+&utm_content=TERMS_CONDITIONS_CA_EN&utm_campaign=WEEKX 
+Conditions of Use .
+
+
+
+This email was sent to 
+mailto:%%emailaddr%% 
+%%emailaddr%% 
+
+Make sure this email goes to your inbox. Add 
+mailto:%%replyemailaddress%% 
+%%replyemailaddress%%  to your address book. 
+
+
+%%Member_Busname%%
+
+%%Member_Addr%% %%Member_City%%, %%Member_State%% %%Member_PostalCode%% %%Member_Country%%
+
+
+Questions or concerns? Contact customer service at 
+mailto:CustomerExperience@dynamite.ca 
+CustomerExperience@dynamite.ca
+ .
+
+
+%%[
+VAR @e, @c, @l, @unsub
+SET @c = Lowercase(COUNTRY)
+SET @e = EMAIL
+SET @l = LANGUAGE
+IF @l == "FR" THEN
+SET @l = Concat("fr-", @c)
+ELSE
+SET @l = Concat("", @c)
+ENDIF
+SET @unsub = "http://www.dynamiteclothing.com/%%=v(@l)=%%/?un=true&token=%%=v(@t)=%%&email=%%=v(@e)=%%"
+]%%
+
+%%=RedirectTo(@unsub)=%% 
+Unsubscribe 
+
