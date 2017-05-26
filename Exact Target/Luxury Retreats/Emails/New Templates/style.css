@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300');
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 @font-face {
   font-family: 'Proxima Nova';
@@ -18,7 +18,7 @@
 
 a, button{cursor: pointer;text-decoration: none;color:#252525;}
 img{display:block}
-table{margin-top: 10px;text-align: center;width:100%;max-width:640px;overflow-wrap: break-word;}
+table{text-align: center;width:100%;max-width:640px;overflow-wrap: break-word;}
 body{background-color: #f5f5f5;color:black;margin:auto;width: 100%;max-width: 640px;}
 
 .wrapper{
@@ -29,10 +29,10 @@ body{background-color: #f5f5f5;color:black;margin:auto;width: 100%;max-width: 64
 }
 
 .centerIt{text-align: center;margin:auto;}
-.preheaderLeft{font-size:10px;text-transform:uppercase;letter-spacing: 1px;margin-bottom:15px;font-family:'Proxima Nova Light','Montserrat', Segoe UI;font-weight: 700;padding: 5px;}
-.preheaderRight{font-size:10px;text-decoration:underline;letter-spacing: 1px;margin-bottom:15px;font-family:'Proxima Nova Light','Montserrat', Segoe UI;font-weight: 700;padding: 5px;}
-.lrlogo{outline:none;text-decoration:none;display:block; border:none;width:200px;height:64px;margin-top: 25px;}
-.line{border-top:1px solid #e2dbd1;width:640px;color:#e2dbd1;width:100%;margin-top:36px;margin-bottom:36px;}
+.preheaderLeft{font-size:10px;text-transform:uppercase;letter-spacing: 1px;margin-bottom:15px;font-family:'Proxima Nova Light','Montserrat', Segoe UI;font-weight: 500;padding: 15px 5px;}
+.preheaderRight{font-size:10px;text-decoration:underline;letter-spacing: 1px;margin-bottom:15px;font-family:'Proxima Nova Light','Montserrat', Segoe UI;font-weight: 500;padding: 15px 5px;}
+.lrlogo{outline:none;text-decoration:none;display:block; border:none;width:200px;height:64px;margin: 30px auto;}
+.line{border-top:1px solid #e2dbd1;width:640px;color:#e2dbd1;width:100%;margin-top:0px;margin-bottom:36px;}
 .CTA .LEADIN{font-size:18px;text-transform:uppercase;letter-spacing: 2px;padding-top: 15px;padding-bottom: 15px;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;font-weight: 600;}
 .CTA .HEADER{font-size:48px;letter-spacing: 1px;margin-bottom:36px;margin-top: 30px;font-family:Baskerville,'Libre Baskerville';}
 .CTA .Body{font-size:24px;letter-spacing: 0.5px;line-height:180%;font-family:'Proxima Nova Light','Montserrat', Segoe UI;}
@@ -43,16 +43,14 @@ body{background-color: #f5f5f5;color:black;margin:auto;width: 100%;max-width: 64
 .HalfTableLeft{float:left;}.HalfTableRight{float:right;}
 
 .premiumSelectionWrapper{
-    width:100%;max-width: 610px;height:auto;max-height: 705px;
-    border: 1px solid rgba(213,213,213,0.5);
-    -webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
-    -moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
-    box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+  margin-top: 10px;text-align: center;width:100%;max-width:640px;max-width: 610px;
+  height:auto;max-height: 705px;border: 1px solid rgba(213,213,213,0.5);-webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+  -moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);background:#fff;
 }
 .premiumSelectionWrapper .header{height:auto;max-height: 65px;width:100%;max-width: 610px;text-transform: uppercase;font-weight: 600px;}
 .premiumSelectionWrapper .copyBlock{padding:0px 20px 20px 20px;}
 .premiumSelectionWrapper .regionName{font-size: 12px;font-weight:600;text-transform:uppercase;letter-spacing: 3px;color:#252525;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI ;}
-.premiumSelectionWrapper .villaName{font-size: 48px;font-weight:600;text-transform:none;letter-spacing:0px;color:#252525;font-family:Baskerville,'Libre Baskerville';margin: 5px 0px;}
+.premiumSelectionWrapper .villaName{font-size: 48px;font-weight:400;text-transform:none;letter-spacing:0px;color:#252525;font-family:Baskerville,'Libre Baskerville';margin: 5px 0px;}
 .premiumSelectionWrapper .villaFeatures{font-size: 18px;font-weight:400;text-transform:none;letter-spacing:0px;color:#252525;font-family:Baskerville,'Libre Baskerville';}
 .premiumSelectionWrapper .CTAa{font-size:14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ffffff;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;line-height: 7px;}
 .premiumSelectionWrapper .CTAb{font-size:14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ff5a60;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;line-height: 7px;margin-bottom: 20px;}
@@ -62,18 +60,15 @@ body{background-color: #f5f5f5;color:black;margin:auto;width: 100%;max-width: 64
 .premiumSelectionWrapper .Button{background-color:#252525;width:100%;max-width: 560px;height:auto;max-height: 45px;padding: 20px;outline:none;margin-bottom: 20px;border: none;}
 
 /* c2ListBlock */
-.c2ListBlock{
-    width:100%;max-width: 610px;height:auto;max-height: 305px;
-    border: 1px solid rgba(213,213,213,0.5);
-    -webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
-    -moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
-    box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+.c2ListBlock{margin-top:10px;margin-left:auto;margin-right:auto;margin-bottom:0px;text-align: center;width:100%;max-width: 610px;height:auto;max-height: 305px;
+  border: 1px solid rgba(213,213,213,0.5);-webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+  -moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);background: #fff;
 }
 .c2ListBlock .image{width:100%;height:100%;max-width:305px;max-height:305px;}
 .c2ListBlock .copyBlock{padding: 0px 20px;text-align: left;}
 .c2ListBlock .regionName{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing: 3px;color:#252525;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;}
-.c2ListBlock .villaName{font-size: 34px;font-weight:400;text-transform:none;letter-spacing: 0px;color:#252525;font-family:Baskerville,'Libre Baskerville';line-height: 140%;height: 115px;}
-.c2ListBlock .villaFeatures{font-size: 22px;font-weight:400;text-transform:none;letter-spacing:1px;color:#252525;font-family:Baskerville,'Libre Baskerville';line-height: 180%;padding-top: 10px;}
+.c2ListBlock .villaName{font-size: 34px;font-weight:400;text-transform:none;letter-spacing: 0px;color:#252525;font-family:Baskerville,'Libre Baskerville';line-height: 140%;vertical-align:baseline;padding-top:10px;height:110px;}
+.c2ListBlock .villaFeatures{font-size: 20px;font-weight:400;text-transform:none;letter-spacing:1px;color:#252525;font-family:Baskerville,'Libre Baskerville';line-height: 160%;padding-bottom:10px;}
 .c2ListBlock .CTAa{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ffffff;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;line-height:5px;}
 .c2ListBlock .CTAb{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ff5a60;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;line-height:5px;}
 .premiumSelectionWrapper .CTAb span{border-bottom:1px solid #ff5a60;padding-bottom:3px;}
@@ -95,7 +90,7 @@ body{background-color: #f5f5f5;color:black;margin:auto;width: 100%;max-width: 64
 /* c2ListBlock */
 
 /* Prefooter */
-.Prefooter{margin:80px 20px;}
+.Prefooter{margin:80px auto;}
 .Prefooter .header{font-size:48px;letter-spacing: 1px;margin-bottom:36px;font-family:Baskerville,'Libre Baskerville';}
 .Prefooter .Body{font-size:24px;letter-spacing: 0.5px;line-height:180%;font-family:'Proxima Nova Light','Montserrat', Segoe UI;}
 .Prefooter .Text{font-size:14px;text-transform:uppercase;letter-spacing: 2px;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI;font-weight: 400;color:#f4f4f4;padding: 20px;}
@@ -104,6 +99,7 @@ body{background-color: #f5f5f5;color:black;margin:auto;width: 100%;max-width: 64
 
 /* Footer */
 .Footer{align-items:center;justify-content:center;}
+.socialcons{margin-top: 80px;}
 .Footer .socialIcons a{width:40px;height:40px;margin:0px 10px;}
 .Footer .footerText{font-size: 12px;font-family:'Proxima Nova Light','Montserrat', Segoe UI;line-height: 200%;}
 .Footer .monogram{width: 100px;height:100px;margin: 50px auto;}
@@ -125,7 +121,8 @@ body{background-color: #f5f5f5;color:black;margin:auto;width: 100%;max-width: 64
   .c2ListBlock .villaName{font-size:1.3em !important;}
   .c2ListBlock .villaFeatures{font-size:1em !important;line-height: 150% !important;padding-bottom: 10px !important;height: 130px !important;}
   .c2ListBlock .CTAa,.c2ListBlock .CTAb,.c2ListBlock .CTAc{font-size:10px !important;}
-  .pinkBackC{width: 160px !important;}  
+  .pinkBackC{width: 160px !important;}
+  .lrlogo{margin: 40px auto 30px auto !important;}
 }
 
 @media only screen and (max-width:375px){
