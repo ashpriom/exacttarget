@@ -1,0 +1,15 @@
+%%[
+
+SET @S2SFeed = LookupOrderedRows("ENT.S2S_POSTCODES", 1, "postcode desc",'postcode', ZIP_POSTAL_CODE)
+SET @S2SCount = rowcount(@S2SFeed)
+
+]%%
+%%[ IF LANGUAGE == 'EN' AND COUNTRY == 'CA' AND @S2SCount > 0 THEN ]%%
+<a href='http://www.garageclothing.com/ca/community/shipping-policy'><img src='http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/13/GRGinstore_email_topper_EN.jpg' style='width:100%;' /></a>
+%%[ ELSEIF LANGUAGE == 'FR' AND COUNTRY == 'CA' AND @S2SCount > 0 THEN ]%%
+<a href='http://www.garageclothing.com/fr-ca/community/envoi-livraison'><img src='http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/13/GRGinstore_email_topper_FR.jpg' style='width:100%;' /></a>
+%%[ ELSEIF LANGUAGE == 'FR' THEN ]%%
+<img src='http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/eletter_apr11_newarrivals_FR_01.jpg' style='width:100%;' />
+%%[ ELSE ]%%
+<img src='http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/Apr10_en_02.jpg' style='width:100%;' />
+%%[ ENDIF ]%% 

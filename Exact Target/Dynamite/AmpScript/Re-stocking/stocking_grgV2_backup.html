@@ -179,9 +179,10 @@ ENDIF
 																
 																	
 												             	SET @ninePlusTax = FormatNumber(Add(@TaxPercentageofNine, 9),"N2")
-						             							SET @ninePlusTax2 = FormatNumber(Add(@TaxPercentageofNine, Subtract(9,0.005)),"N2")
+											SET @ninePlusTaxMinusPenny = Subtract(@ninePlusTax, 0.01)
+											SET @ninePlusTaxPlusPenny = Add(@ninePlusTax, 0.01)
 
-										                     	IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTax2 THEN]%%
+					                     IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTaxMinusPenny OR @differenceAmount == @ninePlusTaxPlusPenny THEN]%%
 																		%%[IF @totalcredit != 0.01 THEN]%%
 																		<tr>
 																			<td>
@@ -199,7 +200,7 @@ ENDIF
 																											<tr>
 																												<td style="font-family: Helvetica, Arial; font-size:12px; line-height:16px; color:black;padding-bottom: 10px;">
 																													Hi %%=V(FIELD(@order, 'bill_to_first_name'))=%%,<br />
-																													Unfortunately, as your order was not picked up within the specified time period of 15 days, we have shipped your item(s) back to our Distribution Centre. As described in our <a style="font-weight:bold;" href="http://www.dynamiteclothing.com/ca/community/return-policy">"Pickup in-store" Return Policy</a>, orders must be picked up in-store within 15 days from the moment we notify you that your pickup is ready. Please note that a return postage fee of $9.00 (plus applicable taxes) was deducted from your total return to cover shipping costs.<br/><br/><br/><br/>
+																													Unfortunately, as your order was not picked up within the specified time period of 15 days, we have shipped your item(s) back to our Distribution Centre. As described in our <a style="font-weight:bold;" href="http://www.garageclothing.com/ca/community/return-policy">"Pickup in-store" Return Policy</a>, orders must be picked up in-store within 15 days from the moment we notify you that your pickup is ready. Please note that a return postage fee of $9.00 (plus applicable taxes) was deducted from your total return to cover shipping costs.<br/><br/><br/><br/>
 																												</td>
 																											</tr>
 																										</table>
@@ -232,7 +233,7 @@ ENDIF
 																											<tr>
 																												<td style="font-family: Helvetica, Arial; font-size:12px; line-height:16px; color:black;padding-bottom: 10px;">
 																													Hi %%=V(FIELD(@order, 'bill_to_first_name'))=%%,<br />
-																													Unfortunately, as your order was not picked up within the specified time period of 15 days, we have shipped your item(s) back to our Distribution Centre. As described in our <a style="font-weight:bold;" href="http://www.dynamiteclothing.com/ca/community/return-policy">"Pickup in-store" Return Policy</a>, orders must be picked up in-store within 15 days from the moment we notify you that your pickup is ready. Please note that a return postage fee of $9.00 (plus applicable taxes) was deducted from your total return to cover shipping costs. However, due to your original order amount being lower than $9.00 (plus applicable taxes), credits were not applied to your account.<br/><br/><br/><br/>
+																													Unfortunately, as your order was not picked up within the specified time period of 15 days, we have shipped your item(s) back to our Distribution Centre. As described in our <a style="font-weight:bold;" href="http://www.garageclothing.com/ca/community/return-policy">"Pickup in-store" Return Policy</a>, orders must be picked up in-store within 15 days from the moment we notify you that your pickup is ready. Please note that a return postage fee of $9.00 (plus applicable taxes) was deducted from your total return to cover shipping costs. However, due to your original order amount being lower than $9.00 (plus applicable taxes), credits were not applied to your account.<br/><br/><br/><br/>
 																												</td>
 																											</tr>
 																										</table>
@@ -793,9 +794,10 @@ ENDIF
 											
 												
 							             	SET @ninePlusTax = FormatNumber(Add(@TaxPercentageofNine, 9),"N2")
-	             							SET @ninePlusTax2 = FormatNumber(Add(@TaxPercentageofNine, Subtract(9,0.005)),"N2")
+											SET @ninePlusTaxMinusPenny = Subtract(@ninePlusTax, 0.01)
+											SET @ninePlusTaxPlusPenny = Add(@ninePlusTax, 0.01)
 
-					                     IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTax2 THEN
+					                     IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTaxMinusPenny OR @differenceAmount == @ninePlusTaxPlusPenny THEN
 						                      	<!-- S2S Subtotal -->
 						                      	SET @totalCredit = FIELD(@credit, 'ord_total_amt')
 						                      	SET @totalTax = 0
@@ -1073,8 +1075,10 @@ ENDIF
 				
 					
              	SET @ninePlusTax = FormatNumber(Add(@TaxPercentageofNine, 9),"N2")
-             	SET @ninePlusTax2 = FormatNumber(Add(@TaxPercentageofNine, Subtract(9,0.005)),"N2")
-             	IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTax2 THEN]%%
+				SET @ninePlusTaxMinusPenny = Subtract(@ninePlusTax, 0.01)
+				SET @ninePlusTaxPlusPenny = Add(@ninePlusTax, 0.01)
+
+             IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTaxMinusPenny OR @differenceAmount == @ninePlusTaxPlusPenny THEN]%%
              		%%[IF @totalcredit != 0.01 THEN]%%
 			        <tr>
 						<td>
@@ -1099,7 +1103,7 @@ ENDIF
 																				<tr>
 																					<td style="font-family: Helvetica, Arial; font-size:12px; line-height:16px; color:black;padding-bottom: 10px;">
 																						Bonjour %%=V(FIELD(@order, 'bill_to_first_name'))=%%,<br />
-																						Malheureusement, comme votre commande n’a pas été ramassée dans le délai prescrit de 15 jours, nous avons renvoyé votre marchandise à notre Centre de distribution. Tel que mentionné dans notre <a style="font-weight: bold;" href="http://www.dynamiteclothing.com/fr-ca/community/return-policy">Politique de retour avec cueillette en magasin</a>, les commandes doivent être ramassées en magasin dans les 15 jours suivant le moment où nous vous avisons que votre commande est prête à être ramassée. Veuillez noter que des frais de retour de 9,00 $ (taxes applicables en sus) ont été déduits de votre remboursement total pour couvrir les frais de transport.<br/><br/><br/><br/>
+																						Malheureusement, comme votre commande n’a pas été ramassée dans le délai prescrit de 15 jours, nous avons renvoyé votre marchandise à notre Centre de distribution. Tel que mentionné dans notre <a style="font-weight: bold;" href="http://www.garageclothing.com/fr-ca/community/politique-retour">Politique de retour avec cueillette en magasin</a>, les commandes doivent être ramassées en magasin dans les 15 jours suivant le moment où nous vous avisons que votre commande est prête à être ramassée. Veuillez noter que des frais de retour de 9,00 $ (taxes applicables en sus) ont été déduits de votre remboursement total pour couvrir les frais de transport.<br/><br/><br/><br/>
 																					</td>
 																				</tr>
 																				</table>
@@ -1145,7 +1149,7 @@ ENDIF
 																				<tr>
 																					<td style="font-family: Helvetica, Arial; font-size:12px; line-height:16px; color:black;padding-bottom: 10px;">
 																						Bonjour %%=V(FIELD(@order, 'bill_to_first_name'))=%%,<br />
-																						Malheureusement, comme votre commande n’a pas été ramassée dans le délai prescrit de 15 jours, nous avons renvoyé votre marchandise à notre Centre de distribution. Tel que mentionné dans notre <a style="font-weight: bold;" href="http://www.dynamiteclothing.com/fr-ca/community/return-policy">Politique de retour avec cueillette en magasin</a>, les commandes doivent être ramassées en magasin dans les 15 jours suivant le moment où nous vous avisons que votre commande est prête à être ramassée. Veuillez noter que des frais de retour de 9,00 $ (taxes applicables en sus) ont été déduits de votre remboursement total pour couvrir les frais de transport. Cependant, puisque le montant de ta commande initiale était inférieur à 9,00 $ (plus les taxes applicables), aucun crédit n’a été versé à ton compte.<br/><br/><br/><br/>
+																						Malheureusement, comme votre commande n’a pas été ramassée dans le délai prescrit de 15 jours, nous avons renvoyé votre marchandise à notre Centre de distribution. Tel que mentionné dans notre <a style="font-weight: bold;" href="http://www.garageclothing.com/fr-ca/community/politique-retour">Politique de retour avec cueillette en magasin</a>, les commandes doivent être ramassées en magasin dans les 15 jours suivant le moment où nous vous avisons que votre commande est prête à être ramassée. Veuillez noter que des frais de retour de 9,00 $ (taxes applicables en sus) ont été déduits de votre remboursement total pour couvrir les frais de transport. Cependant, puisque le montant de ta commande initiale était inférieur à 9,00 $ (plus les taxes applicables), aucun crédit n’a été versé à ton compte.<br/><br/><br/><br/>
 																					</td>
 																				</tr>
 																				</table>
@@ -1711,9 +1715,10 @@ ENDIF
 										
 											
 						             	SET @ninePlusTax = FormatNumber(Add(@TaxPercentageofNine, 9),"N2")
-             							SET @ninePlusTax2 = FormatNumber(Add(@TaxPercentageofNine, Subtract(9,0.005)),"N2")
+											SET @ninePlusTaxMinusPenny = Subtract(@ninePlusTax, 0.01)
+											SET @ninePlusTaxPlusPenny = Add(@ninePlusTax, 0.01)
 
-				                     IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTax2 THEN
+					                     IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTaxMinusPenny OR @differenceAmount == @ninePlusTaxPlusPenny THEN
 				                      	<!-- S2S Subtotal -->
 				                      	SET @totalCredit = FIELD(@credit, 'ord_total_amt')
 				                      	SET @totalTax = 0

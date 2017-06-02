@@ -1,0 +1,80 @@
+@mixin mediaCustom_hMax($maxValh:767px ){
+    @media all and (max-height: $maxValh){
+        @content;
+    }
+}
+@mixin mediaMobilePortrait {
+    @media all and (max-width: 479px) {
+        @content;
+    }
+}
+
+@mixin mediaGreaterThanMobile {
+    @media all and (min-width: 768px) {
+        @content;
+    }
+}
+@mixin mediaRetina {
+    @media (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi) {
+        @content;
+    }
+}
+@mixin mediaTablet {
+    @media all and (min-width: 768px) and (max-width: 959px) {
+        @content;
+    }
+}
+@mixin mediaMobile{
+    @media all and (max-width: 767px){
+        @content;
+    }
+}
+@mixin mediaCustomMax($maxVal:767px){
+    @media all and (max-width: $maxVal){
+        @content;
+    }
+}
+@mixin mediaCustom_wMax_hMax($maxValw:767px,$maxValh:767px ){
+    @media all and (max-width: $maxValw) and (max-height: $maxValh){
+        @content;
+    }
+}
+@mixin mediaCustom_wMin_hMax($maxValw:767px,$maxValh:767px ){
+    @media all and (min-width: $maxValw) and (max-height: $maxValh){
+        @content;
+    }
+}
+
+
+
+
+@mixin showMe_Crossfade{
+    opacity: 0;
+    visibility:hidden;
+    transition: visibility 0s linear 0.5s,opacity 0.5s linear;
+    &.showMe,&.show{
+        opacity:1;
+        visibility:visible;
+        transition-delay:0s;
+    }
+}
+@mixin clearfix{
+    &::before,
+    &::after{
+        content:" ";
+        display:table
+    }
+    &::after{
+        clear:both;
+    }
+}
+@mixin ellipsisObj($width:auto){
+    white-space: nowrap;
+    width: $width;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+

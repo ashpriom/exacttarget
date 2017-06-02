@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial scale=1.0" name="viewport">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300');
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Proxima Nova'),
+  local('ProximaNova'), url(http://exclusives.luxuryretreats.com/wp-content/themes/lr-exclusives-theme-2015/includes/lr-kit/assets/fonts/proxima-nova-web/ProximaNova-Regular/ProximaNova-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Semibold';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Proxima Nova Semibold'),
+  local('Proxima Nova Semibold'), url(http://exclusives.luxuryretreats.com/wp-content/themes/lr-exclusives-theme-2015/includes/lr-kit/assets/fonts/proxima-nova-web/ProximaNova-Semibold/ProximaNova-Semibold.woff) format('woff');
+}
+
+a, button{cursor: pointer;text-decoration: none;color:#252525;}
+img{display:block}
+table{text-align: center;width:100%;max-width:640px;overflow-wrap: break-word;}
+body{background-color: #f5f5f5;color:black;margin:auto;width: 100%;max-width: 640px;}
+
+.wrapper{
+  width: 100%;
+  max-width: 640px;
+  margin: auto;
+  background-color: #f5f5f5;
+}
+.centerIt{text-align: center;margin:auto;}
+
+.preheaderLeft{font-size:10px;text-transform:uppercase;letter-spacing: 1px;margin-bottom:15px;font-family:'Proxima Nova Light','Montserrat', Segoe UI;font-weight: 500;padding: 15px 5px;}
+.preheaderRight{font-size:10px;text-decoration:underline;letter-spacing: 1px;margin-bottom:15px;font-family:'Proxima Nova Light','Montserrat', Segoe UI;font-weight: 500;padding: 15px 5px;}
+.lrlogo{outline:none;text-decoration:none;display:block; border:none;width:200px;height:64px;margin: 30px auto;}
+.line{border-top:1px solid #e2dbd1;width:640px;color:#e2dbd1;width:100%;margin-top:0px;margin-bottom:36px;}
+.CTA .LEADIN{font-size:18px;text-transform:uppercase;letter-spacing: 2px;padding-top: 15px;padding-bottom: 15px;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;font-weight: 600;}
+.CTA .HEADER{font-size:48px;letter-spacing: 1px;margin-bottom:36px;margin-top: 30px;font-family:Baskerville,'Libre Baskerville';}
+.CTA .Body{font-size:24px;letter-spacing: 0.5px;line-height:180%;font-family:'Proxima Nova Light','Montserrat', Segoe UI;}
+.CTA .Text{font-size:18px;text-transform:uppercase;letter-spacing: 2px;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI;font-weight: 400;color:#f4f4f4;padding: 20px;}
+.CTA .Button{background-color:#252525;height: 60px;width:350px;margin:20px 60px;border: 0px;}
+
+.halfTable{width:50%;max-width:320px;padding:0px;}
+.HalfTableLeft{float:left;}.HalfTableRight{float:right;}
+
+.premiumSelectionWrapper{
+  margin-top: 10px;text-align: center;width:100%;max-width: 610px;
+  height:auto;max-height: 705px;border: 1px solid rgba(213,213,213,0.5);-webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+  -moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);background:#fff;
+}
+.premiumSelectionWrapper .header{height:auto;max-height: 65px;width:100%;max-width: 610px;text-transform: uppercase;font-weight:400;}
+.premiumSelectionWrapper .copyBlock{padding:0px 20px 20px 20px;}
+.premiumSelectionWrapper .regionName{font-size: 12px;font-weight:600;text-transform:uppercase;letter-spacing: 3px;color:#252525;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI ;}
+.premiumSelectionWrapper .villaName{font-size: 48px;font-weight:400;text-transform:none;letter-spacing:0px;color:#252525;font-family:Baskerville,'Libre Baskerville';margin: 5px 0px;}
+.premiumSelectionWrapper .villaFeatures{font-size: 18px;font-weight:400;text-transform:none;letter-spacing:0px;color:#252525;font-family:Baskerville,'Libre Baskerville';}
+.premiumSelectionWrapper .CTAa{font-size:14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ffffff;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;line-height: 7px;}
+.premiumSelectionWrapper .CTAb{font-size:14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ff5a60;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;line-height: 7px;margin-bottom: 20px;}
+.premiumSelectionWrapper .CTAb span, .c2ListBlock .CTAb span{border-bottom:1px solid #ff5a60;padding-bottom:3px;}
+.premiumSelectionWrapper .CTAc{font-size:14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ffffff;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;line-height: 7px;}
+.premiumSelectionWrapper .CTAb span{border-bottom:1px solid #ff5a60;padding-bottom:3px;}
+.premiumSelectionWrapper .Button{background-color:#252525;width:100%;max-width: 560px;height:auto;max-height: 45px;padding: 20px;outline:none;margin-bottom: 20px;border: none;}
+
+/* c2ListBlock */
+.c2ListBlock{margin-top:10px;margin-left:auto;margin-right:auto;margin-bottom:0px;text-align: center;width:100%;max-width: 610px;height:auto;
+  border: 1px solid rgba(213,213,213,0.5);-webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);
+  -moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);background: #fff;
+}
+.c2ListBlock .image{width:100%;height:100%;}
+.c2ListBlock .copyBlock{padding: 0px 20px;text-align: left;}
+.c2ListBlock .regionName{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing: 3px;color:#252525;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;}
+.c2ListBlock .villaName{font-size: 38px;font-weight:400;text-transform:none;letter-spacing: 0px;color:#252525;font-family:Baskerville,'Libre Baskerville';line-height: 140%;vertical-align:baseline;padding-top:10px;height:110px;}
+.c2ListBlock .villaFeatures{font-size: 20px;font-weight:400;text-transform:none;letter-spacing:1px;color:#252525;font-family:Baskerville,'Libre Baskerville';line-height: 150%;padding-bottom:10px;}
+.c2ListBlock .CTAa{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ffffff;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;line-height:2px;}
+.c2ListBlock .CTAb{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ff5a60;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;line-height:7px;}
+.premiumSelectionWrapper .CTAb span{border-bottom:1px solid #ff5a60;padding-bottom:3px;}
+.c2ListBlock .CTAc{font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing:2px;color:#ffffff;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI ;line-height:7px;}
+.pinkBack{background-color:#f37870;}
+.pinkBackC{
+  background-color: #f37870;
+  width: 300px;
+  position: absolute;
+  text-align: center;
+  margin-top: -30px;
+  margin-left:2px !important;
+  height: auto;
+  max-height: 60px;
+  z-index: 1000;
+  text-align: center;
+}
+.c2ListBlock .Button{background-color:#252525;width:100%;max-width:260px;height:auto;max-height:40px;padding: 20px;outline: none;border: none;}
+/* c2ListBlock */
+
+/* Prefooter */
+.Prefooter{margin:80px auto;}
+.Prefooter .header{font-size:48px;letter-spacing: 1px;margin-bottom:36px;font-family:Baskerville,'Libre Baskerville';}
+.Prefooter .Body{font-size:24px;letter-spacing: 0.5px;line-height:180%;font-family:'Proxima Nova Light','Montserrat', Segoe UI;}
+.Prefooter .Text{font-size:14px;text-transform:uppercase;letter-spacing: 2px;font-family:'Proxima Nova Semibold','Montserrat', Segoe UI;font-weight: 400;color:#f4f4f4;padding: 20px;}
+.Prefooter .Button{background-color:#252525;height:60px;width:350px;margin:20px 60px;outline: none;border: 0px;border: none;}
+/* Prefooter */
+
+/* Footer */
+.Footer{align-items:center;justify-content:center;}
+.socialcons{margin-top: 80px;}
+.Footer .socialIcons a{width:40px;height:40px;margin:0px 10px;}
+.Footer .footerText{font-size: 12px;font-family:'Proxima Nova Light','Montserrat', Segoe UI;line-height: 200%;}
+.Footer .monogram{width: 100px;height:100px;margin: 50px auto;}
+/* Footer */
+
+#container { width:100%; max-width:640px; }
+.deviceWidth { width:100%; max-width:640px; }
+
+@media only screen and (min-width: 481px) and (max-width:639px){
+  .mobilePadding{padding: 15px;}
+  .c2ListBlock .villaName{}
+  .c2ListBlock .villaFeatures{line-height: 150% !important;}
+  .pinkBackC{width: 170px !important;}
+  .c2ListBlock .CTAc{font-size: 14px !important;}
+  .c2ListBlock .villaFeatures{padding-top: 10px !important;}
+}
+
+@media only screen and (max-width:480px){
+  .mobilePadding{padding: 15px;}
+  .hideMobile{display:none !important;}
+  .c2ListBlock .villaName{height:94px !important;}
+  .c2ListBlock .villaName{}
+  .c2ListBlock .villaFeatures{line-height: 150% !important;padding-bottom:7px !important;height:110px !important;}
+  .c2ListBlock .CTAa,.c2ListBlock .CTAb,.c2ListBlock .CTAc{font-size:14px !important;}
+  .lrlogo{margin: 40px auto 30px auto !important;}
+}
+
+@media only screen and (max-width:375px){
+  .pinkBackC{margin-top: -20px !important;}
+  .c2ListBlock .CTAa,.c2ListBlock .CTAb,.c2ListBlock .CTAc{font-size: 12px !important;}
+}        
+
+@media only screen and (max-width:320px){
+  .c2ListBlock .CTAa,.c2ListBlock .CTAb,.c2ListBlock .CTAc{font-size:10px;}
+  .pinkBackC{margin-top: -20px !important;}
+  .c2ListBlock .villaName{height: 100px !important;}
+}
+    </style>
+</head>
+
+<body style="background-color: #f5f5f5;color:black;margin:auto;width: 100%;max-width: 640px;" >
+  <style>
+  </style>  
+  <div class="wrapper" style="width: 100%;
+  max-width: 640px;
+  margin: auto;
+  background-color: #f5f5f5;overflow-wrap: break-word;">
+  <!-- Main Table -->  
+  <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px; width:100%; max-width:640px;overflow-wrap: break-word;" align="center" border="0" cellpadding="0" cellspacing="0" class="deviceWidth mobilePadding">
+    
+    <tbody>
+
+      <!-- Web version -->
+      <tr class="deviceWidth hideMobile" style="width:100%; max-width:640px;">
+        <td class="halfTable HalfTableLeft" style="width:50%;max-width:320px;padding:0px;float:left;">
+          <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+              <tr>
+                <td align="left" class="preheaderLeft" style="font-size:10px;text-transform:uppercase;letter-spacing: 1px;margin-bottom:15px;font-family:'Proxima Nova Light','Montserrat',Segoe UI;font-weight: 500;padding: 15px 5px;">
+                  Our Latest Additions
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td class="halfTable HalfTableRight" style="width:50%;max-width:320px;padding:0px;float:right;">
+          <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+              <tr>
+                <td align="right" class="preheaderRight" valign="middle" style="font-size:10px;text-decoration:underline;letter-spacing: 1px;margin-bottom:15px;font-family:'Proxima Nova Light','Montserrat', Segoe UI;font-weight: 500;padding: 15px 5px;"><a style="cursor: pointer;text-decoration: none;color:#252525;"  href="%%view_email_url%%" name="Web Version" target="_blank">View email in your browser</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr><!-- End web version -->
+      
+      <!-- logo -->
+      <tr class="deviceWidth centerIt" style="width:100%; max-width:640px;">
+        <td>
+          <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;" class="centerIt" style="text-align: center;margin:auto;" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+              <tr>
+                <td>
+                  <a style="cursor: pointer;text-decoration: none;color:#252525;" href="https://www.luxuryretreats.com/" target="_blank"><img style="display:block;outline:none;text-decoration:none;display:block; border:none;width:200px;height:64px;margin: 30px auto;text-align: center;" alt="Luxury Retreats" border="0" class="centerIt lrlogo" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/luxury-retreats.png"></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr><!-- logo end -->
+      
+      <!-- Top Block -->
+      <tr class="deviceWidth centerIt" style="width: 100%;max-width: 640px;">
+        <td style="font-size: 10px; color: #000; border-collapse: collapse;">
+          <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;" border="0" cellpadding="0" cellspacing="0" class="main-menu" style="border-collapse: collapse;" width="100%">
+            <tbody>
+              <tr>
+                <td class="item">
+                    <div class="CTA">
+                        <div class="line" style="border-top:1px solid #e2dbd1;width:640px;color:#e2dbd1;width:100%;margin-top:0px;margin-bottom:36px;"></div>
+                        <p class="LEADIN" style="font-size:18px;text-transform:uppercase;letter-spacing: 2px;padding-top: 15px;padding-bottom: 15px;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;font-weight: 600;">New Additions</p>
+                        <p class="HEADER" style="font-size:48px;letter-spacing: 1px;margin-bottom:36px;margin-top: 30px;font-family:Baskerville,'Libre Baskerville';">You deserve the <i>very</i> best.</p>
+                        <p class="Body" style="font-size:24px;letter-spacing: 0.5px;line-height:180%;font-family:'Proxima Nova Light','Montserrat',Segoe UI;">With masterfully decorated living areas<br/> surrounded by mountain ranges and turquoise<br/> oceans, we have everything you need to<br/> truly get away from it all.</p>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals?collections=NewVillas" target="_blank">
+                            <button class="Button" style="background-color:#252525;height: 60px;width:350px;margin:20px 60px;border: 0px;"><p class="Text centerIt" style="font-size:14px;text-transform:uppercase;letter-spacing: 2px;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;font-weight: 400;color:#f4f4f4;-webkit-margin-before: 0px;">See what’s new ></p></button>
+                        </a>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <!-- Top Block -->
+
+      <!-- Premium Selection -->
+      <tr class="centerIt" style="text-align: center;margin:auto;">
+        <td>
+            <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;max-width: 610px;height:auto;max-height: 705px;border: 1px solid rgba(213,213,213,0.5);-webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);-moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);background:#fff;" class="centerIt premiumSelectionWrapper">
+                <!-- Premium Selection Header -->
+                <tr class="copyBlock" style="padding:0px 20px 20px 20px;">
+                    <td>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals/United-States/Colorado-Greater-Aspen/Downtown-Aspen/Castle-Rim-117051" target="_blank">
+                            <table style="margin-top: 10px;margin-bottom: 10px;text-align:center;height:auto;max-height: 65px;width:100%;max-width: 610px;text-transform: uppercase;font-weight:600;" class="header centerIt" border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                              <tr>
+                                <td class="halfTable HalfTableLeft" style="width:50%;max-width:320px;padding:0px;float:left;">
+                                  <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;" border="0" cellpadding="2" cellspacing="0" style="border-collapse: collapse;mso-table-lspace:0;mso-table-rspace:0;">
+                                    <tbody>
+                                      <tr>
+                                        <td align="left" class="preheaderLeft" style="font-size:10px;text-transform:uppercase;letter-spacing: 1px;margin-bottom:15px;font-family:'Proxima Nova Light','Montserrat',Segoe UI;font-weight: 700;padding: 5px;" style="padding:10px;">
+                                          <img style="display:block;border: none;width: 18px;height: 17px;display: inline-block;padding: 0px 10px 0px 10px;"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/Luxury-retreats-+monogram.png" style="border:none;width:18px;height:17px;display: inline-block;padding:0px 5px;"><span style="display:inline-block;vertical-align: top;padding-top: 3px;letter-spacing: 3px;">Premium Selection</span>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                                <td class="halfTable HalfTableRight" style="width:50%;max-width:320px;padding:0px;float:right;">
+                                  <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;" align="right" border="0" cellpadding="2" cellspacing="0" style="border-collapse: collapse;">
+                                    <tbody>
+                                      <tr>
+                                        <td align="right" class="preheaderRight" style="padding:10px;font-size:10px;letter-spacing: 1px;margin-bottom:15px;font-family:'Proxima Nova Light','Montserrat',Segoe UI;font-weight: 700;padding: 7px 5px;text-decoration: none;"><a style="cursor: pointer;text-decoration: none;color:#252525;padding: 0px 10px 0px 10px;letter-spacing: 3px;"  href="https://www.luxuryretreats.com/vacation-rentals/United-States/Colorado-Greater-Aspen/Downtown-Aspen/Castle-Rim-117051" target="_blank">Explore Villa > </a></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+                <!-- Premium Selection Header -->
+                <!-- Premium Selection Image -->
+                <tr>
+                    <td>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals/United-States/Colorado-Greater-Aspen/Downtown-Aspen/Castle-Rim-117051" target="_blank">
+                            <table style="text-align:center;width:100%;max-width:640px;" class="header centerIt" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <table style="text-align:center;width:100%;max-width:640px;" border="0" cellpadding="2" cellspacing="0" style="border-collapse: collapse;">
+                                            <tbody>
+                                              <tr>
+                                                <td>
+                                                  <img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/AltAPremiumVilla.png" style="border:none;width:100%;max-width:600px;height:auto;max-height:400px;display: inline-block;padding:0px 5px;outline:none;text-decoration:none;display:block; border:none;width:200px;height:64px;margin-top: 25px;">
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+                <!-- Premium Selection Image -->
+                <!-- Premium Selection Region -->
+                <tr>
+                    <td>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals/United-States/Colorado-Greater-Aspen/Downtown-Aspen/Castle-Rim-117051" target="_blank">
+                            <table style="text-align: center;width:100%;max-width:640px;" class="header centerIt" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <table style="text-align: center;width:100%;max-width:640px;" border="0" cellpadding="2" cellspacing="0" style="border-collapse: collapse;">
+                                            <tbody>
+                                              <tr>
+                                                <td>
+                                                    <p class="regionName" style="font-size: 12px;font-weight:600;text-transform:uppercase;letter-spacing: 3px;color:#252525;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;">Colorado</p>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+                <!-- Premium Selection Region -->
+                <!-- Premium Selection Villa Name -->
+                <tr>
+                    <td>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals/United-States/Colorado-Greater-Aspen/Downtown-Aspen/Castle-Rim-117051" target="_blank">
+                            <table style="text-align: center;width:100%;max-width:640px;" class="header centerIt" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <table style="text-align: center;width:100%;max-width:640px;" border="0" cellpadding="2" cellspacing="0" style="border-collapse: collapse;">
+                                            <tbody>
+                                              <tr>
+                                                <td>
+                                                    <p class="villaName" style="font-size: 48px;font-weight:400;text-transform:none;letter-spacing:0px;color:#252525;font-family: Baskerville,'Libre Baskerville';margin: 5px 0px;">Castle Rim</p>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+                <!-- Premium Selection Villa Name -->
+                <!-- Premium Selection Villa Features -->
+                <tr>
+                    <td>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals/United-States/Colorado-Greater-Aspen/Downtown-Aspen/Castle-Rim-117051" target="_blank">
+                            <table style="text-align: center;width:100%;max-width:640px;" class="header centerIt" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <table style="text-align: center;width:100%;max-width:640px;" border="0" cellpadding="2" cellspacing="0" style="border-collapse: collapse;mso-table-lspace:0;mso-table-rspace:0;">
+                                            <tbody>
+                                              <tr>
+                                                <td>
+                                                    <p class="villaFeatures" style="font-size: 18px;font-weight:400;text-transform:none;letter-spacing:1px;color:#252525;font-family: Baskerville,'Libre Baskerville';line-height: 180%;margin: auto;">6 Bedrooms • 6.5 Bathrooms • Mountain View</p>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+                <!-- Premium Selection Villa Features -->
+                <!-- Premium Selection Villa Button -->
+                <tr>
+                    <td>
+                        <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals/United-States/Colorado-Greater-Aspen/Downtown-Aspen/Castle-Rim-117051" target="_blank">
+                            <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;" class="header centerIt" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <table style="text-align: center;width:100%;max-width:640px;" border="0" cellpadding="2" cellspacing="0" style="border-collapse: collapse;mso-table-lspace:0;mso-table-rspace:0;">
+                                            <tbody>
+                                              <tr>
+                                                <td>
+                                                    <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals?collections=NewVillas" target="_blank">
+                                                        <button class="Button" style="background-color:#252525;width:100%;max-width: 560px;height:auto;max-height: 45px;padding: 20px;outline:none;margin-bottom: 20px;border: none;"><p class="CTAa centerIt" style="font-size:14px;text-transform:uppercase;letter-spacing: 2px;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;font-weight: 400;color:#f4f4f4;-webkit-margin-before: 0px;margin-top:0px;">Take a look inside ></p></button>
+                                                    </a>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </a>
+                    </td>
+                </tr>
+                <!-- Premium Selection Villa Button -->
+            </table>
+        </td>
+    </tr>
+    <!-- Premium Selection -->
+    
+    <!-- 2 Column Listing Block -->
+
+    <!-- Villa Listing 1 -->
+    <tr class="centerIt" style="text-align:center;margin:auto;">
+        <td>
+            <table style="margin-top:10px;margin-left:auto;margin-right:auto;margin-bottom:0px;text-align:center;width:100%;max-width: 610px;" class="header centerIt" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            <table>
+                                <tbody>
+                                    <tr style="margin-top:10px;margin-left:auto;margin-right:auto;margin-bottom:0px;text-align:center;width:100%;max-width: 610px;height:auto;max-height: 305px;border: 1px solid rgba(213,213,213,0.5);-webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);-moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);background: #fff;" class="c2ListBlock">
+                                        <td class="halfTable HalfTableLeft" style="width:50%;max-width:320px;padding:0px;float:left;">
+                                            <table style="text-align: center;width:100%;max-width:640px;" border="0" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="image">
+                                                            <img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/beachEnclaveOcean.png" style="border:none;width:100%;max-width:305px;height:auto;max-height:305px;display:inline-block;">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td class="halfTable HalfTableRight" style="width:50%;max-width:320px;padding:0px;float:right;">
+                                            <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;padding-left:20px;padding-right:20px;text-align: left;overflow-wrap: break-word;" border="0" cellpadding="0" cellspacing="0" class="copyBlock">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="regionName" style="font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing: 3px;color:#252525;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;">
+                                                            Turks and caicos
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="villaName" style="font-size: 34px;font-weight:400;text-transform:none;letter-spacing: 0px;color:#252525;font-family: Baskerville,'Libre Baskerville';line-height: 140%;vertical-align:baseline;padding-top:10px;height:110px;">
+                                                            Beach Enclave Oceanview 
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="villaFeatures" style="font-size: 20px;font-weight:400;text-transform:none;letter-spacing:1px;color:#252525;font-family: Baskerville,'Libre Baskerville';line-height: 160%;padding-bottom:10px;">
+                                                            • 4 Bedrooms<br/> • 4.5 Bathrooms<br/> • Yoga & Recreation<br/> 
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals?collections=NewVillas" target="_blank">
+                                                                <button class="Button" style="background-color:#252525;width:100%;max-width:260px;height:auto;max-height:40px;padding: 20px;outline: none;border: none;"><p class="CTAa centerIt" style="font-size:15px;text-transform:uppercase;letter-spacing: 2px;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;font-weight: 400;color:#f4f4f4;-webkit-margin-before:0em;margin-top:0px;">Take a look inside ></p></button>
+                                                            </a> 
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
+            </td>
+      </tr>
+      <!-- Villa Listing 1 -->
+      
+      <!-- Villa Listing 2 -->
+      <tr class="centerIt" style="text-align:center;margin:auto;">
+        <td>
+            <table style="margin-top:10px;margin-left:auto;margin-right:auto;margin-bottom:0px;text-align:center;width:100%;max-width: 610px;" class="header centerIt" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            <table>
+                                <tbody>
+                                    <tr style="margin-top:10px;margin-left:auto;margin-right:auto;margin-bottom:0px;text-align: center;width:100%;max-width: 610px;height:auto;max-height: 305px;border: 1px solid rgba(213,213,213,0.5);-webkit-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);-moz-box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);box-shadow: -2px 0px 5px 0px rgba(213,213,213,0.5);background: #fff;" class="c2ListBlock">
+                                        <td class="halfTable HalfTableLeft" style="width:50%;max-width:320px;padding:0px;float:left;">
+                                            <table style="text-align: center;width:100%;max-width:640px;" border="0" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="image">
+                                                            <img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/baliStyle.png" style="border:none;width:100%;max-width:305px;height:auto;max-height:305px;display:inline-block;">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td class="halfTable HalfTableRight" style="width:50%;max-width:320px;padding:0px;float:right;">
+                                            <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;padding-left:20px;padding-right:20px;text-align: left;overflow-wrap: break-word;" border="0" cellpadding="0" cellspacing="0" class="copyBlock">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="regionName" style="font-size: 14px;font-weight:400;text-transform:uppercase;letter-spacing:3px;color:#252525;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;">
+                                                            California
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="villaName" style="font-size: 34px;font-weight:400;text-transform:none;letter-spacing: 0px;color:#252525;font-family: Baskerville,'Libre Baskerville';line-height: 140%;vertical-align:baseline;padding-top:10px;height:110px;">
+                                                            Bali Style 
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="villaFeatures" style="font-size: 20px;font-weight:400;text-transform:none;letter-spacing:1px;color:#252525;font-family: Baskerville,'Libre Baskerville';line-height: 160%;padding-bottom:10px;">
+                                                            • 4 Bedrooms<br/> • 4.5 Bathrooms<br/> • Yoga & Recreation<br/> 
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals?collections=NewVillas" target="_blank">
+                                                                <button class="Button" style="background-color:#252525;width:100%;max-width:260px;height:auto;max-height:40px;padding: 20px;outline: none;border: none;"><p class="CTAa centerIt" style="font-size:15px;text-transform:uppercase;letter-spacing: 2px;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;font-weight: 400;color:#f4f4f4;-webkit-margin-before:0em;margin-top:0px;">Take a look inside ></p></button>
+                                                            </a> 
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <!-- Villa Listing 2 -->
+
+    <!-- 2 Column Listing Block -->
+
+    <!-- Prefooter -->
+    <tr class="deviceWidth centerIt" style="width: 100%;max-width: 640px;">
+        <td style="font-size: 10px; color: #000; border-collapse: collapse;">
+            <table style="margin-top: 10px;text-align: center;width:100%;max-width:640px;border-collapse: collapse;margin:80px auto;" border="0" cellpadding="0" cellspacing="0" class="Prefooter">
+                <tbody>
+                  <tr>
+                    <td class="item">
+                        <div class="CTA" style="padding: 0px 20px;">
+                            <p class="HEADER" style="font-size:48px;letter-spacing: 1px;margin-bottom:36px;font-family: Baskerville,'Libre Baskerville';">Travel better, <i>together.</i></p>
+                            <p class="Body" style="font-size:24px;letter-spacing: 0.5px;line-height:180%;font-family:'Proxima Nova Light','Montserrat',Segoe UI;">With villas made to outfit your every need,<br/> time traveling together never felt so easy.</p>
+                            <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/vacation-rentals?collections=NewVillas" target="_blank">
+                                <button class="Button" style="background-color:#252525;height:60px;width:350px;margin:20px 60px;outline: none;border: 0px;border: none;"><p class="Text centerIt" style="font-size:16px;text-transform:uppercase;letter-spacing: 2px;font-family:'Proxima Nova Semibold','Montserrat',Segoe UI;font-weight: 400;color:#f4f4f4;-webkit-margin-before: 0px;">Let's Make Memories ></p></button>
+                            </a>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <!-- Prefooter -->
+
+    <!-- Footer -->
+    <tr class="deviceWidth centerIt Footer" style="width: 100%;max-width: 640px;align-items:center;justify-content:center;">
+      <td>
+          <div class="CTA">
+              <div class="line" style="border-top:1px solid #e2dbd1;width:640px;color:#e2dbd1;width:100%;margin-top:0px;margin-bottom:36px;"></div>
+              <p class="socialIcons" style="margin-top: 80px;">
+                  <a style="cursor: pointer;text-decoration: none;color:#252525;width:40px;height:40px;margin:0px 10px;display: inline-block;"  href="https://www.facebook.com/luxuryretreats"><img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/facebook-2.png" style="border:none;width:auto;height:auto;display:inline-block;"></a>
+                  <a style="cursor: pointer;text-decoration: none;color:#252525;width:40px;height:40px;margin:0px 10px;display: inline-block;"  href="https://twitter.com/luxuryretreats"><img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/twitter-2.png" style="border:none;width:auto;height:auto;display:inline-block;"></a>
+                  <a style="cursor: pointer;text-decoration: none;color:#252525;width:40px;height:40px;margin:0px 10px;display: inline-block;"  href="https://www.youtube.com/user/luxuryretreats"><img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/youtube.png" style="border:none;width:auto;height:auto;display:inline-block;"></a>
+                  <a style="cursor: pointer;text-decoration: none;color:#252525;width:40px;height:40px;margin:0px 10px;display: inline-block;"  href="https://www.instagram.com/luxuryretreats/"><img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/instagram-2.png" style="border:none;width:auto;height:auto;display:inline-block;"></a>
+              </p>
+              <p class="footerText" style="font-size: 12px;font-family:'Proxima Nova Light','Montserrat',Segoe UI;line-height: 200%;">
+                  <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/contact?src=%%jobid%%&utm_source=ExactTarget&utm_medium=email&utm_campaign=%%view_email_url%%" target="_blank">Contact Us</a>  |  
+                  <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="http://www.luxuryretreats.com/homeowner?src=%%jobid%%&utm_source=ExactTarget&utm_medium=email&utm_campaign=%%view_email_url%%" target="_blank">List Your Property</a>  |  
+                  <a style="cursor: pointer;text-decoration: none;color:#252525;"  href="https://www.luxuryretreats.com/privacy-terms?src=%%jobid%%&utm_source=ExactTarget&utm_medium=email&utm_campaign=%%view_email_url%%" target="_blank">Privacy</a>
+              </p>
+              <p class="footerText">
+                  We want you to hear about what's just right for you. Update your email preferences <a style="cursor: pointer;text-decoration: none;color:#252525;" href="%%profile_center_url%%" alias="Update Profile" target="_blank"><u>here</u></a>.<br/>
+                  If you want to manage your email subscription, please click <a style="cursor: pointer;text-decoration: none;color:#252525;" href="%%profile_center_url%%" alias="Update Profile" target="_blank"><u>here</u></a>.<br/>
+                  %%Member_Busname%% | %%Member_Addr%% | %%Member_City%%, %%Member_State%% %%Member_PostalCode%% %%Member_Country%%<br/>
+                  <a style="cursor: pointer;text-decoration: none;color:#252525;" target="_blank" href="luxuryretreats.com">luxuryretreats.com</a><br/>
+              </p>
+              <p><custom name="opencounter" type="tracking"></p>
+              <p class="monogram" style="width: 100px;height:100px;margin: 50px auto;"><img style="display:block"  alt="Luxury Retreats" border="0" src="http://image.s6.exacttarget.com/lib/fe8812717d670c7471/m/5/monogram-circle.png" style="width:auto;height:auto;display:inline-block;"></p>
+          </div>
+        </td>
+    </tr>
+    <!-- Footer -->
+
+    </tbody>
+  </table>
+  <!-- Main Table -->
+
+  </div>
+</body>
+</html>

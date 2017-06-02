@@ -179,9 +179,10 @@ ENDIF
 																
 																	
 												             	SET @ninePlusTax = FormatNumber(Add(@TaxPercentageofNine, 9),"N2")
-						             							SET @ninePlusTax2 = FormatNumber(Add(@TaxPercentageofNine, Subtract(9,0.005)),"N2")
+						             							SET @ninePlusTaxMinusPenny = Subtract(@ninePlusTax, 0.01)
+						             							SET @ninePlusTaxPlusPenny = Add(@ninePlusTax, 0.01)
 
-										                     	IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTax2 THEN]%%
+										                     	IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTaxMinusPenny OR @differenceAmount == @ninePlusTaxPlusPenny THEN]%%
 																		%%[IF @totalcredit != 0.01 THEN]%%
 																		<tr>
 																			<td>
@@ -793,9 +794,10 @@ ENDIF
 											
 												
 							             	SET @ninePlusTax = FormatNumber(Add(@TaxPercentageofNine, 9),"N2")
-	             							SET @ninePlusTax2 = FormatNumber(Add(@TaxPercentageofNine, Subtract(9,0.005)),"N2")
+											SET @ninePlusTaxMinusPenny = Subtract(@ninePlusTax, 0.01)
+											SET @ninePlusTaxPlusPenny = Add(@ninePlusTax, 0.01)
 
-					                     IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTax2 THEN
+					                     IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTaxMinusPenny OR @differenceAmount == @ninePlusTaxPlusPenny THEN
 						                      	<!-- S2S Subtotal -->
 						                      	SET @totalCredit = FIELD(@credit, 'ord_total_amt')
 						                      	SET @totalTax = 0
@@ -1073,8 +1075,10 @@ ENDIF
 				
 					
              	SET @ninePlusTax = FormatNumber(Add(@TaxPercentageofNine, 9),"N2")
-             	SET @ninePlusTax2 = FormatNumber(Add(@TaxPercentageofNine, Subtract(9,0.005)),"N2")
-             	IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTax2 THEN]%%
+				SET @ninePlusTaxMinusPenny = Subtract(@ninePlusTax, 0.01)
+				SET @ninePlusTaxPlusPenny = Add(@ninePlusTax, 0.01)
+
+         		IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTaxMinusPenny OR @differenceAmount == @ninePlusTaxPlusPenny THEN]%%
              		%%[IF @totalcredit != 0.01 THEN]%%
 			        <tr>
 						<td>
@@ -1711,9 +1715,10 @@ ENDIF
 										
 											
 						             	SET @ninePlusTax = FormatNumber(Add(@TaxPercentageofNine, 9),"N2")
-             							SET @ninePlusTax2 = FormatNumber(Add(@TaxPercentageofNine, Subtract(9,0.005)),"N2")
+										SET @ninePlusTaxMinusPenny = Subtract(@ninePlusTax, 0.01)
+										SET @ninePlusTaxPlusPenny = Add(@ninePlusTax, 0.01)
 
-				                     IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTax2 THEN
+				                     IF @differenceAmount == @ninePlusTax OR @differenceAmount == @ninePlusTaxMinusPenny OR @differenceAmount == @ninePlusTaxPlusPenny THEN
 				                      	<!-- S2S Subtotal -->
 				                      	SET @totalCredit = FIELD(@credit, 'ord_total_amt')
 				                      	SET @totalTax = 0
