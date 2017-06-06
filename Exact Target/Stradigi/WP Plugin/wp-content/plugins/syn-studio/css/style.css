@@ -1,0 +1,83 @@
+#inforoom{ font-family: 'Droid Sans', sans-serif; font-size: 1em; }
+#inforoom h1{ font-family: 'Droid Sans', sans-serif; padding:7px; font-size: 30px; }
+
+#inforoom h2{
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 1.3em;
+	padding:7px;
+	margin:0px;
+}
+
+#inforoom ul{
+	background-color: currentColor;
+    height: 80px;
+    padding: 7px;
+}
+
+.inforoom-menu ul li{ float: left; padding-top: 15px; }
+.inforoom-menu ul li h2{ padding:0px; margin:none; }
+
+#inforoom ul li h2 a{
+	color: aliceblue;
+    font-family: 'Droid Sans', sans-serif;
+    margin: 7px;
+    text-decoration: none;
+    background-color: firebrick;
+    padding: 10px;
+}
+
+#inforoom .info-table{
+	width: 99%;
+	text-align: center;
+	border: 1px dotted lightgray;
+	padding: 10px;
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 1.1em;
+	background-color: #ECF7F1;
+}
+
+#inforoom .info-table tr{width: 80%;}
+#inforoom .info-table td{ padding: 7px;}
+#inforoom  table tr:first-child{ background-color: #504B5E;color: whitesmoke;}
+#inforoom .info-table table td:first-child{ background-color:#e0e0e0 !important; max-width: 60px !important; }
+#inforoom .info-table select{ width: 350px !important;}
+#inforoom  form{float:left; margin-right: 7px;}
+
+#inforoom .button-primary{
+	font-family: 'Droid Sans', sans-serif !important;
+	background: #D94C3C !important;
+    border-color: transparent !important;
+    color: #fff;
+    -webkit-box-shadow: inset 0 1px 0 #e8776f;
+    box-shadow: inset 0 1px 0 transparent !important;
+    text-shadow: 0 0px 0px #006799,0px 0 0px #006799,0 0px 0px #006799,0px 0 0px #006799 !important;
+}
+
+#inforoom .button-green{
+	color:white;
+	border-radius: 3px;
+	background: #63AE9E !important;
+    border-color: transparent !important;
+    box-shadow: inset 0 1px 0 transparent,0 1px 0 rgba(0,0,0,.15) !important;
+    cursor:pointer;
+}
+
+#inforoom .button-purple{
+	color:white;
+	border-radius: 3px;
+	padding:7px;
+	background: #34313D !important;
+    border-color: transparent !important;
+    box-shadow: inset 0 1px 0 transparent,0 1px 0 rgba(0,0,0,.15) !important;
+    cursor:pointer;
+}
+
+#inforoom .button-secondary{
+	font-family: 'Droid Sans', sans-serif !important;
+    border-color: transparent !important;
+    box-shadow: inset 0 1px 0 transparent,0 1px 0 rgba(0,0,0,.15) !important;
+    cursor:pointer;
+}
+
+#delete-entry tr{background-color:transparent !important;}
+#delete-entry tr td{padding:0px !important;}

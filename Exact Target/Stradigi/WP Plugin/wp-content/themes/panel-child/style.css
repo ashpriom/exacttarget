@@ -1,0 +1,16 @@
+/*
+Theme Name: Panel Child
+Theme URI: https://wordpress.com/themes/panel/
+ Description:  Panel
+ Author:       John Doe
+ Author URI:   http://example.com
+ Template:     panel
+ Version:      1.0.0
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain-2:  panel-child
+*/
+
+@import url("../panel/style.css");
+@import url("//hello.myfonts.net/count/2fc4dd");
+@import url('https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
