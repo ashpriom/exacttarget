@@ -1,0 +1,168 @@
+%%[
+var @ROW, @GUID, @Rowvalue
+set @GUID = SUBSCRIBER_KEY
+set @Rows = Lookuprows("ENT.EmailAccounts_ImportFromGigya_Production", "GID", @GUID)
+set @Rowcount = RowCount(Lookuprows("ENT.EmailAccounts_ImportFromGigya_Production", "GID", @GUID))
+]%%
+%%[ /*User not in Master DE*/
+IF @Rowcount < '1'
+THEN 
+SET @Language = LANGUAGE
+SET @LoyBanner = Concat('JOIN_',@Language)
+ELSE]%%
+%%[
+/*JOIN*/
+SET @Row = ROW(@Rows,1)
+SET @IsLoyalty = FIELD(@Row,"IsLoyalty")
+SET @Lang = UPPERCASE(FIELD(@Row,"Language"))
+IF @IsLoyalty == 'True' 
+THEN
+SET @LoyBanner = Concat('JOIN_',@Lang)
+ELSE
+THEN
+SET @LoyBanner = Concat('SOCIAL_',@Lang)
+ENDIF]%%
+%%[ENDIF]%%
+%%[
+IF @LoyBanner == 'DOWNLOAD_EN'
+THEN
+]%%
+
+
+<!-- Case #2: Non-Loyalty - Banner EN Download -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="http://www.garageclothing.com/ca/studio" target="_blank"> 
+			<img src="http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/grg_en_loy_banner_download.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'JOIN_EN'
+THEN
+]%%
+<!-- Case #1: Non-Loyalty - Banner EN Join -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.garageclothing.com/ca/profile/login.jsp?pop=loyalty" target="_blank"> 
+			<img src="http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/grg_en_loy_banner_Join.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'PROFILE_EN'
+THEN
+]%%
+<!-- Case #3.3: PROFILE BADGE INCOMPLETE - Banner EN Profile -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="http://www.garageclothing.com/ca/studio" target="_blank"> 
+			<img src="http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/grg_en_loy_banner_Profile.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'PROFILE_FR'
+THEN
+]%%
+<!-- Loy Banner FR Profile -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="http://www.garageclothing.com/fr-ca/studio" target="_blank"> 
+			<img src="http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/grg_fr_loy_banner_Profile.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'DOWNLOAD_FR'
+THEN
+]%%
+<!-- Case #2: Non-Loyalty - Banner FR Download -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="http://www.garageclothing.com/fr-ca/studio" target="_blank"> 
+			<img src="http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/grg_fr_loy_banner_Download.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'JOIN_FR'
+THEN
+]%%
+<!-- Case #1: Non-Loyalty - Banner FR Join -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.garageclothing.com/fr-ca/profile/login.jsp?pop=loyalty" target="_blank"> 
+			<img src="http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/grg_fr_loy_banner_Join.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+%%[
+ELSEIF @LoyBanner == 'SOCIAL_FR'
+THEN
+]%%
+<!-- Case #3.3: PROFILE BADGE INCOMPLETE - Banner FR Profile -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.instagram.com/garageclothing/" target="_blank"> 
+			<img src="http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/grg_fr_loy_banner_social.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner 'SOCIAL_EN'
+THEN
+]%%
+<!-- NON FLAGGED EN - Banner EN Social -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.instagram.com/garageclothing/" target="_blank"> 
+			<img src="http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/grg_en_loy_banner_Social.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+%%[
+ELSE
+]%%
+<!-- Default Banner - Banner EN Social -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.instagram.com/garageclothing/" target="_blank"> 
+			<img src="http://image.email.garageclothing.com/lib/fe9812717060047976/m/11/grg_en_loy_banner_Social.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+%%[ENDIF]%%

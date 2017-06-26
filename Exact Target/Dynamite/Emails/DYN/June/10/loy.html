@@ -1,0 +1,155 @@
+%%[
+var @ROW, @GUID, @Rowvalue
+set @GUID = SUBSCRIBER_KEY
+set @Rows = Lookuprows("ENT.EmailAccounts_ImportFromGigya_Production", "GID", @GUID)
+set @Rowcount = RowCount(Lookuprows("ENT.EmailAccounts_ImportFromGigya_Production", "GID", @GUID))
+]%%
+%%[ /*User not in Master DE*/
+IF @Rowcount < '1'
+THEN 
+SET @Language = LANGUAGE
+SET @LoyBanner = Concat('JOIN_',@Language)
+ELSE]%%
+%%[
+/*JOIN*/
+set @Row = ROW(@Rows,1)
+SET @IsLoyalty = FIELD(@Row,"IsLoyalty")
+SET @Lang = UPPERCASE(FIELD(@Row,"Language"))
+IF @IsLoyalty == 'True'
+THEN
+SET @LoyBanner = ''
+ELSE
+THEN
+SET @LoyBanner = Concat('JOIN_',@Lang)
+ENDIF]%%
+%%[ENDIF]%%
+%%[
+IF @LoyBanner == 'DOWNLOAD_EN'
+THEN
+]%%
+<!-- Case #2: Non-Loyalty - Banner EN Download -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="http://www.dynamiteclothing.com/ca/studio" target="_blank"> 
+			<img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/14/DYN_EN_BANNER_App.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'JOIN_EN'
+THEN
+]%%
+<!-- Case #1: Non-Loyalty - Banner EN Join -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.dynamiteclothing.com/ca/profile/login.jsp?pop=loyalty" target="_blank"> 
+			<img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/14/loyjoinEN.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'PROFILE_EN'
+THEN
+]%%
+<!-- Case #3.3: PROFILE BADGE INCOMPLETE - Banner EN Profile -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="http://www.dynamiteclothing.com/ca/studio" target="_blank"> 
+			<img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/14/DYN_EN_BANNER_Profile.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'PROFILE_FR'
+THEN
+]%%
+<!-- Loy Banner FR Profile -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="http://www.dynamiteclothing.com/fr-ca/studio" target="_blank"> 
+			<img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/14/DYN_FR_BANNER_Profile.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'DOWNLOAD_FR'
+THEN
+]%%
+<!-- Case #2: Non-Loyalty - Banner FR Download -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="http://www.dynamiteclothing.com/fr-ca/studio" target="_blank"> 
+			<img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/14/DYN_FR_BANNER_App.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'JOIN_FR'
+THEN
+]%%
+<!-- Case #1: Non-Loyalty - Banner FR Join -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.dynamiteclothing.com/fr-ca/profile/login.jsp?pop=loyalty" target="_blank"> 
+			<img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/14/loyjoinFR.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+%%[
+ELSEIF @LoyBanner == 'SOCIAL_FR'
+THEN
+]%%
+<!-- Case #3.3: PROFILE BADGE INCOMPLETE - Banner FR Social -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.instagram.com/dynamiteclothing/" target="_blank"> 
+			<img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/14/DYN_FR_BANNER_Social.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+%%[
+ELSEIF @LoyBanner == 'SOCIAL_EN'
+THEN
+]%%
+<!-- NON FLAGGED EN - Banner EN Social -->
+<table align="center" cellspacing="0" cellpadding="0" border="0" width="620">
+	<tbody>
+		<tr>
+			<td>
+			<a conversion="true" href="https://www.instagram.com/dynamiteclothing/" target="_blank"> 
+			<img src="http://image.email.dynamitestyle.com/lib/fe9a12717060047974/m/14/DYN_EN_BANNER_Social.jpg" alt="" style="display: block;" border="0" width="620" /></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+%%[
+ELSE
+]%%
+%%[ENDIF]%%

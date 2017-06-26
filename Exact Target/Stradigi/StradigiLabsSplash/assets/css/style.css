@@ -1,0 +1,112 @@
+.flexcontainer{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f9f9f9;
+}
+
+.main{max-width: 50%;text-align: center;}
+.contact img, .social img{display: inline-block;}
+.contact, .contact span{
+	font-family:'Catamaran', sans-serif;font-weight: 400;font-size:14px;
+	text-align: left;
+  color:#eba85a;
+ }
+.copyright{font-family:'Catamaran', sans-serif;font-weight: 400;font-size:10px;color:#b3b3b3 !important;}
+.social{font-family:'Catamaran', sans-serif;font-weight: 400;font-size:14px;color:#404040;}
+
+body, a, a:hover, button{text-decoration: none;color:#000000;}
+html, body{height:100%;}
+nav{background-color: #ffffff !important;}
+.navbar-right{
+	float: right!important;
+  margin-right: -15px !important;
+}
+.go-right{float:right;}
+ul{
+	 list-style: none;
+   margin: 0;
+   padding-left: 0;
+}
+li{
+	 display: inline-block;
+   position: relative;
+   padding:0px 5px;
+}
+.mainWrapper{display:table;margin:auto;height:100%;}
+.main{display:table-cell;vertical-align: middle;}
+.main a:hover{color:white;}
+.main h1{font-family:'Catamaran', sans-serif;font-weight: 700;font-size:40px;letter-spacing: -2px;
+    line-height: 35px;padding-bottom:20px;}
+.main p{font-family:'Catamaran', sans-serif;font-weight: 400;font-size:16px;color:#7c7c7c;line-height: 24px;padding-bottom:20px;}
+.main button{font-family:'Catamaran', sans-serif;font-weight: 700;font-size:16px;}
+
+.main li a{
+	  border-radius: 3px;
+    text-align: center;
+    z-index: 1;
+    vertical-align: middle;
+    padding: 10px 15px 10px 30px;
+    border: 2px #eba85a solid;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    background-color: white;
+    box-shadow: 0px 9px 13px 0 rgba(0,0,0,0.03);
+    position: relative;
+    font-size: 16px;
+    letter-spacing: -0.4px;
+    font-weight: bold;
+    transition: color .2s;
+    text-decoration: none;
+    font-family:'Catamaran', sans-serif;
+    font-weight: 700;
+}
+.main li a::after {
+    content: '';
+    width: 20px;
+    height: 11px;
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+    background-image: url(../images/icon-arrow-black.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.main li a:hover{
+	border-color: #eba85a;
+  background-color: #eba85a;
+  transition: all 0.5s;
+  color: white;
+}
+.main li a:hover::after{
+    content: '';
+    width: 20px;
+    height: 11px;
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+    background-image: url(../images/icon-arrow-white.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 767px){
+	.main{max-width: 70% !important;padding:0px 20px;}
+	.main h1{
+		font-size:40px;
+		letter-spacing: -2px;
+		line-height: 15px;
+		margin: 10px auto;
+	}
+	.main p{font-size:14px;line-height: 24px;margin-bottom:10px;}
+	.main button{font-size:20px;}
+	.contact, .contact a, .contact span{font-size:12px !important;margin-top:2px;}
+	.copyright{font-size:16px;} .copyright p{text-align: center !important;}
+	.social{font-size:16px;}
+	.social{text-align: center !important;}
+}
+
+@media screen and (max-width: 425px){
+	.copyright p{font-size:12px;}
+}
